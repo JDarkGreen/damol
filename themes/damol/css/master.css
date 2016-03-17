@@ -27,6 +27,11 @@ body, html {
   width: 100%;
 }
 
+/* line 41, ../sass/master.sass */
+.wrapper-flex {
+  display: flex;
+}
+
 /************************************************************************************** */
 /**-------------------------- HEADER   -----------------------------------------------* */
 /************************************************************************************** */
@@ -39,15 +44,15 @@ body, html {
 /************************************************************************************** */
 /**-------------------------- NAVIGATION ----------------------------------------------* */
 /************************************************************************************** */
-/* line 60, ../sass/master.sass */
+/* line 65, ../sass/master.sass */
 .mainNav {
   background-color: #2f2f2f;
 }
-/* line 64, ../sass/master.sass */
+/* line 69, ../sass/master.sass */
 .mainNav ul {
   margin: 0 auto;
 }
-/* line 66, ../sass/master.sass */
+/* line 71, ../sass/master.sass */
 .mainNav ul li {
   border-top: 3px solid transparent;
   margin: 2px 12px 15px;
@@ -57,15 +62,15 @@ body, html {
   -webkit-transition: all 300ms ease;
   transition: all 300ms ease;
 }
-/* line 73, ../sass/master.sass */
+/* line 78, ../sass/master.sass */
 .mainNav ul li:hover, .mainNav ul li.current-menu-item, .mainNav ul li.current-page-item {
   border-top: 3px solid #ff6600;
 }
-/* line 76, ../sass/master.sass */
+/* line 81, ../sass/master.sass */
 .mainNav ul li:hover a, .mainNav ul li.current-menu-item a, .mainNav ul li.current-page-item a {
   color: #ff6600;
 }
-/* line 79, ../sass/master.sass */
+/* line 84, ../sass/master.sass */
 .mainNav ul li a {
   color: white;
   display: block;
@@ -78,7 +83,7 @@ body, html {
   -webkit-transition: all 300ms ease;
   transition: all 300ms ease;
 }
-/* line 89, ../sass/master.sass */
+/* line 94, ../sass/master.sass */
 .mainNav ul li a:hover {
   text-decoration: none;
 }
@@ -89,13 +94,13 @@ body, html {
 /************************************************************************************** */
 /**-------------------------- ------   BANNERS   ------------------------------------* */
 /************************************************************************************** */
-/* line 107, ../sass/master.sass */
+/* line 112, ../sass/master.sass */
 .sectionBanner .carousel-caption__content {
   position: absolute;
   z-index: 99999;
   top: 32.5%;
 }
-/* line 113, ../sass/master.sass */
+/* line 118, ../sass/master.sass */
 .sectionBanner .carousel-caption__content h2 {
   background: #2f2f2f;
   color: white;
@@ -104,7 +109,7 @@ body, html {
   margin: 0 auto;
   padding: 14px 21px;
 }
-/* line 121, ../sass/master.sass */
+/* line 126, ../sass/master.sass */
 .sectionBanner .carousel-caption__content p {
   background-color: #ff6600;
   color: white;
@@ -113,15 +118,15 @@ body, html {
   margin: 0 auto;
   padding: 6px 31px 11px;
 }
-/* line 130, ../sass/master.sass */
+/* line 135, ../sass/master.sass */
 .sectionBanner .carousel-caption__content--left {
   left: 9.97%;
 }
-/* line 132, ../sass/master.sass */
+/* line 137, ../sass/master.sass */
 .sectionBanner .carousel-caption__content--right {
   right: 9.97%;
 }
-/* line 137, ../sass/master.sass */
+/* line 142, ../sass/master.sass */
 .sectionBanner .carousel-indicators li {
   -moz-border-radius: 0px;
   -webkit-border-radius: 0px;
@@ -132,7 +137,7 @@ body, html {
   margin: 0 7px;
   width: 14px;
 }
-/* line 146, ../sass/master.sass */
+/* line 151, ../sass/master.sass */
 .sectionBanner .carousel-indicators li.active {
   background-color: #ff6600;
 }

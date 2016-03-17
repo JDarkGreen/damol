@@ -21,8 +21,18 @@
 ?>
 
 <!-- CONTENIDO PRINCIPAL -->
-<main class="mainWrapper">
+<main class="mainWrapper center-block">
 	
+	<!-- contenedor flexible -->
+	<section class="wrapper-flex">
+
+		<!-- SECCION SERVICIOS -->
+		<section class="sectionHomeService">
+			<h2 class="text-uppercase"><?php _e( 'nuestros servicios' , 'damol-framework' ); ?></h2>
+		</section><!-- /.sectionHomeService -->
+		
+	</section> <!-- /.wrapper-flex-->
+
 </main> <!-- /mainWrapper -->
 
 <!-- Footer -->
