@@ -2,18 +2,20 @@
 @import "compass/css3"
 
 /***************************************************************************************/
-/**-------------------------- RESET --------------------------------------------------**/
-/***************************************************************************************/
-body,html
-	font-size: 16px
-	width    : 100%
-
-/***************************************************************************************/
 /**-------------------------- VARIALBLES ---------------------------------------------**/
 /***************************************************************************************/
 
 $color_black       : #2f2f2f
-$color_damol_orange: #ff7e00
+$color_damol_orange: #ff6600
+
+/***************************************************************************************/
+/**-------------------------- RESET --------------------------------------------------**/
+/***************************************************************************************/
+body,html
+	background: orange
+	font-size : 16px
+	width     : 100%
+
 
 
 /***************************************************************************************/
@@ -29,6 +31,11 @@ $color_damol_orange: #ff7e00
 /**-------------------------       WRAPPER         -        --------------------------**/
 /***************************************************************************************/
 
+//>>> MAIN WRAPPER
+.mainWrapper
+	background-color: white 
+	max-width       : 1107px
+	width           : 100%
 
 /***************************************************************************************/
 /**-------------------------- HEADER   -----------------------------------------------**/
@@ -55,6 +62,7 @@ $color_damol_orange: #ff7e00
 
 	//ul
 	ul
+		margin: 0 auto
 		li 
 			border-top: 3px solid transparent
 			margin    : 2px 12px 15px
@@ -91,3 +99,49 @@ $color_damol_orange: #ff7e00
 /***************************************************************************************/
 /**-------------------------- ------   BANNERS   ------------------------------------**/
 /***************************************************************************************/
+
+//BANNER PORTADA HOME
+.sectionBanner
+	
+	//contenido caption interior.
+	.carousel-caption__content 
+		position: absolute
+		z-index : 99999
+		top     : 32.5%
+
+		//ESTILOS DE FUENTES E INTERIOR
+		h2
+			background : $color_black
+			color      : white
+			font-size  : 1.6875em
+			font-weight: 700
+			margin     : 0 auto
+			padding    : 14px 21px
+
+		p 
+			background-color: $color_damol_orange
+			color           : white
+			font-size       : 1.125em
+			line-height     : 1em 
+			margin          : 0 auto 
+			padding         : 6px 31px 11px
+
+	//contenido administrado en el backend izquierda o derecha
+	.carousel-caption__content--left
+		left: 9.97%
+	.carousel-caption__content--right
+		right: 9.97%
+
+	//>>>>> INDICADORES -ol
+	.carousel-indicators
+		li 
+			+border-radius(0px)
+			background: white 
+			border    : none
+			height    : 14px
+			margin    : 0 7px 
+			width     : 14px
+
+			//activo
+			&.active
+				background-color: $color_damol_orange

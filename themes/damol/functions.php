@@ -10,8 +10,9 @@ define('IMAGES', THEMEROOT.'/images');
 /* Load JS Files */
 /***********************************************************************************************/
 function load_custom_scripts() {
+	//bootstrap
 	wp_enqueue_script('bootstrap', THEMEROOT . '/js/bootstrap.min.js', array('jquery'), '3.3.6', true);
-
+	//upload gallery
   	//script
 	wp_enqueue_script('custom_script', THEMEROOT . '/js/scripts.js', array('jquery'), false, true);
 }
@@ -19,10 +20,22 @@ function load_custom_scripts() {
 add_action('wp_enqueue_scripts', 'load_custom_scripts');
 
 /***********************************************************************************************/
+/* Cargar  JS Files en el administrador */
+/***********************************************************************************************/
+
+/* Add the media uploader script */
+function load_admin_custom_enqueue() {
+    wp_enqueue_media();
+	wp_enqueue_script('upload-gallery', THEMEROOT . '/js/media-lib-uploader.js', array('jquery'), '', true);
+}
+
+add_action('admin_enqueue_scripts', 'load_admin_custom_enqueue');
+
+/***********************************************************************************************/
 /* Add Theme Support for Post Formats, Post Thumbnails and Automatic Feed Links */
 /***********************************************************************************************/
 	add_theme_support('post-formats', array('link', 'quote', 'gallery', 'video'));
-	add_theme_support('post-thumbnails', array('post','page','banner'));
+	add_theme_support('post-thumbnails', array('post','page','banner','service'));
 	set_post_thumbnail_size(210, 210, true);
 	add_image_size('custom-blog-image', 784, 350);
 	add_theme_support('automatic-feed-links');
@@ -63,10 +76,11 @@ if (function_exists('register_sidebar')) {
 /* Agregando nuevos tipos de post  */
 /***********************************************************************************************/	
 
-/*|>>>>>>>>>>>>>>>>>>>> BANNERS  <<<<<<<<<<<<<<<<<<<<|*/
 
-function damol_create_banner_post_type(){
+function damol_create_post_type(){
 
+	/*|>>>>>>>>>>>>>>>>>>>> BANNERS  <<<<<<<<<<<<<<<<<<<<|*/
+	
 	$labels = array(
 		'name'               => __('Banners'),
 		'singular_name'      => __('Banner'),
@@ -89,22 +103,49 @@ function damol_create_banner_post_type(){
 		'menu_icon'   => 'dashicons-visibility',
 	);
 
+	/*|>>>>>>>>>>>>>>>>>>>> SERVICIOS  <<<<<<<<<<<<<<<<<<<<|*/
+	
+	$labels2 = array(
+		'name'               => __('Servicio'),
+		'singular_name'      => __('Servicio'),
+		'add_new'            => __('Nuevo Servicio'),
+		'add_new_item'       => __('Agregar nuevo Servicio'),
+		'edit_item'          => __('Editar Servicio'),
+		'view_item'          => __('Ver Servicio'),
+		'search_items'       => __('Buscar Servicios'),
+		'not_found'          => __('Servicio no encontrado'),
+		'not_found_in_trash' => __('Servicio no encontrado en la papelera'),
+	);
+
+	$args2 = array(
+		'labels'      => $labels2,
+		'has_archive' => true,
+		'public'      => true,
+		'hierachical' => false,
+		'supports'    => array('title','editor','excerpt','custom-fields','thumbnail','page-attributes'),
+		'taxonomies'  => array('post-tag','servicio_category'),
+		'menu_icon'   => 'dashicons-exerpt-view',
+	);
+	
+
+	/*|>>>>>>>>>>>>>>>>>>>> REGISTRAR  <<<<<<<<<<<<<<<<<<<<|*/
 	register_post_type('banner',$args);
+	register_post_type('service',$args2);
 }
 
-add_action( 'init', 'damol_create_banner_post_type' );
+add_action( 'init', 'damol_create_post_type' );
 
 
 /***********************************************************************************************/
 /* Registrar nueva taxomomia para  nuevos tipos de post  */
 /***********************************************************************************************/	
 
+//create a custom taxonomy
+add_action( 'init', 'create_damol_category_taxonomy', 0 );
+
+function create_damol_category_taxonomy() {
+
 /* categorias banner */
-add_action( 'init', 'create_banner_category_taxonomy', 0 );
-
-//create a custom taxonomy categorias banner
-function create_banner_category_taxonomy() {
-
   $labels = array(
     'name'             => __( 'Categoría Banner'),
     'singular_name'    => __( 'Categoría Banner'),
@@ -117,10 +158,24 @@ function create_banner_category_taxonomy() {
     'add_new_item'     => __( 'Agregar nueva categoría de banner' ),
     'new_item_name'    => __( 'Nuevo nombre categoría de banner' ),
     'menu_name'        => __( 'Categoria Banner' ),
-  ); 	
+  ); 
+
+ /* categorias servicios */
+ $labels2 = array(
+    'name'             => __( 'Categoría Servicio'),
+    'singular_name'    => __( 'Categoría Servicio'),
+    'search_items'     => __( 'Buscar Categoría Servicio'),
+    'all_items'        => __( 'Todas Categorías del Servicio' ),
+    'parent_item'      => __( 'Categoría padre del Servicio' ),
+    'parent_item_colon'=> __( 'Categoría padre:' ),
+    'edit_item'        => __( 'Editar categoría de Servicio' ), 
+    'update_item'      => __( 'Actualizar categoría de Servicio' ),
+    'add_new_item'     => __( 'Agregar nueva categoría de Servicio' ),
+    'new_item_name'    => __( 'Nuevo nombre categoría de Servicio' ),
+    'menu_name'        => __( 'Categoria Servicio' ),
+  ); 		
 
 // Now register the taxonomy
-
   register_taxonomy('banner_category',array('banner'), array(
     'hierarchical'     => true,
     'labels'           => $labels,
@@ -128,6 +183,15 @@ function create_banner_category_taxonomy() {
     'show_admin_column'=> true,
     'query_var'        => true,
     'rewrite'          => array( 'slug' => 'banner-category' ),
+  ));
+
+  register_taxonomy('servicio_category',array('servicio'), array(
+    'hierarchical'     => true,
+    'labels'           => $labels2,
+    'show_ui'          => true,
+    'show_admin_column'=> true,
+    'query_var'        => true,
+    'rewrite'          => array( 'slug' => 'servicio-category' ),
   ));
 
 }
@@ -188,6 +252,67 @@ if ( function_exists( 'add_theme_support' ) ) {
     add_filter( 'manage_pages_columns' , 'inox_add_thumbnail_columns' );
     add_action( 'manage_pages_custom_column' , 'inox_add_thumbnail_columns_data', 10, 2 );
 }
+
+/***********************************************************************************************/
+/* Agregar campo subir imagenes  a la taxonomia categoria servicios  */
+/***********************************************************************************************/
+
+add_action ( 'servicio_category_edit_form_fields', 'damol_campos_extras', 10, 2);
+
+function damol_campos_extras( $tag ) {    
+	$t_id     = $tag->term_id;
+	$cat_meta = get_option( "category_$t_id");
+?>
+
+	<tr class="form-field">
+		<th scope="row" valign="top"><label for="cat_Image_url"><?php _e('Url de la Imagen'); ?></label></th>
+		<td>
+			<input type="text" name="Cat_meta[img]" id="Cat_meta[img]" size="3" style="width:60%;" value="<?php echo $cat_meta['img'] ? $cat_meta['img'] : ''; ?>"><br />
+            <span class="description"><?php _e('Imagen para la categoría, usar http://'); ?></span>
+			
+			<?php if( !empty( $cat_meta['img'] ) ) : ?>
+            	<p></p>
+				<img src="<?=  $cat_meta['img'] ?>" alt="" style="width: 200px; height: 150px;" />
+			<?php endif; ?>
+            
+            <p></p>
+
+            <button id="btn_to_gallery" class="button button-primary">
+            	<?php if( !empty( $cat_meta['img'] ) ) : ?>
+            		Actualizar Imagen
+            	<?php else: ?>
+            		Cargar Imagen
+            	<?php endif; ?>
+            </button>
+        </td>
+	</tr>
+ 
+<?php
+}
+
+//>>>>>>> GUARDAR LA DATA
+add_action( 'edited_servicio_category', 'damol_guardar_campos_extras', 10, 2);
+
+function damol_guardar_campos_extras( $term_id ) {
+    if ( isset( $_POST['Cat_meta'] ) ) {
+		$t_id     = $term_id;
+		$cat_meta = get_option( "category_$t_id");
+		$cat_keys = array_keys($_POST['Cat_meta']);
+        
+        foreach ($cat_keys as $key){
+            if ( isset($_POST['Cat_meta'][$key]) ){
+                $cat_meta[$key] = $_POST['Cat_meta'][$key];
+            }
+        }
+        //Guardamos las opciones
+        update_option( "category_$t_id", $cat_meta );
+    }
+}
+
+
+
+
+
 
 /***********************************************************************************************/
 /* Cargas opciones de la página y customizar widgets  */
