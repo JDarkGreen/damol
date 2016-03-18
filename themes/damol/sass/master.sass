@@ -8,6 +8,7 @@
 $color_black       : #2f2f2f
 $color_damol_orange: #ff6600
 $color_gray        : #f1eff0
+$color_gray_dark   : #c2c2c2
 
 /***************************************************************************************/
 /**-------------------------- RESET --------------------------------------------------**/
@@ -232,8 +233,81 @@ body,html
 		color: $color_damol_orange
 
 	//CAROUSEL
-	.sectionHomeProyects__carousel
-		.bx-wrapper 
-			.bx-viewport
-				background: transparent
-				border    : none
+	.bx-wrapper
+		padding: 0 0 0 15px
+		.bx-viewport
+			background: transparent
+			border    : none
+			margin    : 0 auto 
+			+box-shadow( none )
+
+	//>>>>>>> ARTICULO DEL CAROUSEL
+	.sectionHomeProyects__article
+		h2
+			background-color: $color_gray_dark
+			color           : $color_black
+			font-size       : 1.375em
+			margin          : 0 auto
+			padding         : 12px
+			text-decoration: none
+			+transition( all 500ms ease )
+
+		a 
+			text-decoration: none
+
+		//imagen 
+		figure 
+			overflow: hidden
+			position: relative
+			img 
+				+transition( all 500ms ease )
+			//span transpancia
+			.bg-transparence
+				+opacity(0)
+				+transition( all 500ms ease )
+				background: rgba(0,0,0,.2)
+				bottom    : 0
+				left      : 0
+				position  : absolute
+				right     : 0
+				top       : 0
+
+		//hover 
+		&:hover 
+			h2
+				background-color: $color_damol_orange
+				color           : white 
+			img
+				+scale( 1.2 )
+			.bg-transparence
+				+opacity(1)
+
+
+
+	//flechas
+	.sectionHomeProyects__carousel__arrow 
+		cursor  : pointer 
+		height  : 20px
+		margin  : -10px auto 0
+		position: absolute
+		top     : 50%
+		width   : 10px
+		z-index : 9999
+		+transition( all 400ms ease )
+
+		//hover 
+		&:hover 
+			+opacity(0.7)
+			+scale( 1.2 )
+
+		a
+			color : transparent
+
+	//prev
+	.sectionHomeProyects__carousel__arrow--prev
+		left: 0
+		background: url('../images/arrows/arrow-left.png') no-repeat
+	//next
+	.sectionHomeProyects__carousel__arrow--next
+		right: 0
+		background: url('../images/arrows/arrow-right.png') no-repeat

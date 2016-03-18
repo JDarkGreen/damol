@@ -146,21 +146,22 @@
 			<!-- Contenedor de sliders -->
 			<section id="carouserl-services-home" class="sectionHomeProyects__carousel">
 				<?php while( $the_query->have_posts() ): $the_query->the_post(); ?>
-					<article class="">
-						<div class="inside">
+					<article class="sectionHomeProyects__article">
+						<a href="<?php the_permalink(); ?>">
 							<figure>
 								<?php the_post_thumbnail('full',array('class'=>'img-responsive')); ?>
+								<span class="bg-transparence"></span>
 							</figure>
-							<h2><?php the_title(); ?></h2>
-						</div>
-					</article>
+							<h2 class="text-center"><?php the_title(); ?></h2>
+						</a>
+					</article> <!-- /.sectionHomeProyects__article -->
 				<?php endwhile; ?>
 
 			</section><!-- /.sectionHomeProyects__carousel -->	
 
 			<!-- FLECHAS -->
-			<div id="service-prev" class="sectionHomeProyects__carousel__arrow sectionHomeProyects__carousel__arrow--prev"></div>
-			<div id="service-next" class="sectionHomeProyects__carousel__arrow sectionHomeProyects__carousel__arrow--next"></div>
+			<div id="proyecto-prev" class="sectionHomeProyects__carousel__arrow sectionHomeProyects__carousel__arrow--prev"></div>
+			<div id="proyecto-next" class="sectionHomeProyects__carousel__arrow sectionHomeProyects__carousel__arrow--next"></div>
 
 		</div> <!-- /.section-wrapper-relative -->
 
