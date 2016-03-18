@@ -7,12 +7,13 @@
 
 $color_black       : #2f2f2f
 $color_damol_orange: #ff6600
+$color_gray        : #f1eff0
 
 /***************************************************************************************/
 /**-------------------------- RESET --------------------------------------------------**/
 /***************************************************************************************/
 body,html
-	background: orange
+	background: $color_damol_orange
 	font-size : 16px
 	width     : 100%
 
@@ -53,6 +54,10 @@ body,html
 	font-weight: 700
 	margin     : 0 auto
 	padding    : 0 0 0 10px 
+
+//>>> WRAPPER POSITION relative
+.section-wrapper-relative
+	position: relative
 
 
 /***************************************************************************************/
@@ -209,3 +214,26 @@ body,html
 			img
 				+transition( all 450ms ease-in-out )
 
+//seccion facebook
+//contenedor
+.sectionHomeFacebook 
+	
+.sectionHomeFacebook__content
+	border     : 2px solid $color_damol_orange
+	border-left: none
+
+//Seccion Proyectos Realizados
+.sectionHomeProyects
+	background-color: $color_gray
+	padding         : 45px 20px
+
+	//title con color naranja
+	h2 
+		color: $color_damol_orange
+
+	//CAROUSEL
+	.sectionHomeProyects__carousel
+		.bx-wrapper 
+			.bx-viewport
+				background: transparent
+				border    : none

@@ -42,53 +42,27 @@
 				
 				<!-- contenedor section -->
 				<?php  
-					#conseguir las categorias generales 
 					$args = array(
-						'exclude'    => '1',
+						'orderby'    => 'count',
 						'hide_empty' => false,
-						'orderby'    => 'menu_order',
-						'order'      => 'ASC'
 					);
 
-					$categories = get_categories($args);
-
-					#var_dump($categories);["term_id]nametaxonomycat_ID
-					$cats = [];
-
-					foreach ($categories as $cat) { $cats[] = $cat->cat_ID;	}
-					$cats = implode(",", $cats );
-
-					//EL QUERY para mostrar los posts de esas categorias
-					$array = array(
-						'category'   => $cats ,
-						'hide_empty' => false,
-						'order'      => 'ASC',
-						'orderby'    => 'menu_order',
-						'post_type'  => 'service',
-					);
-
-					$services = get_posts( $array );
+					#$services = get_terms( 'servicio_category', $args );
 
 					#var_dump($services);
+					#echo $serv->term_id;
 
 					foreach( $services as $serv ) : 
 				?>
 					<article class="sectionHomeService__article">
 						<?php 
-							if( has_post_thumbnail( $serv->ID ) ) : 
+							#$service_data = get_option("category_".$serv->term_id);
+							#$imagen       = $service_data['img'];
+							#if( !empty($imagen) ) : 
 						?>
-							<figure>
-								<?= get_the_post_thumbnail( $serv->ID ,'full', array('class'=>'img-responsive') ) ?>
-							</figure>
+							<figure><img src="<?= $imagen; ?>" alt="" class="img-responsive" /></figure>
 						<?php endif; ?>
-						<h3 class="text-uppercase text-center">
-							<strong>
-								<?php 
-									$categoria = get_the_category($serv->ID);
-									_e( $categoria[0]->name , 'damol-framework' );
-								?>
-							</strong>
-						</h3>
+						<h3 class="text-uppercase text-center"><strong><?php _e( $serv->name , 'damol-framework' ); ?></strong></h3>
 					</article> <!-- /.sectionHomeService__article -->
 				<?php endforeach; ?>
 
@@ -128,12 +102,11 @@
 	<section class="sectionHomeProyects">
 		<!-- Titulos -->
 		<h2 class="mainWrapper__title text-uppercase"><?php _e( 'proyectos realizados' , 'damol-framework' ); ?></h2>
-		<br>
 
 		<?php  
 			//the query 
 			$args = array(
-				'post_type' => 'proyecto'
+				'post_type' => 'proyectos'
 			);
 
 			$the_query = new Wp_Query($args);

@@ -12,7 +12,8 @@ define('IMAGES', THEMEROOT.'/images');
 function load_custom_scripts() {
 	//bootstrap
 	wp_enqueue_script('bootstrap', THEMEROOT . '/js/bootstrap.min.js', array('jquery'), '3.3.6', true);
-	//upload gallery
+	//bootstrap
+	wp_enqueue_script('bxslider', THEMEROOT . '/js/jquery.bxslider.min.js', array('jquery'), '4.1.2', true);
   	//script
 	wp_enqueue_script('custom_script', THEMEROOT . '/js/script.js', array('jquery'), false, true);
 }
@@ -35,7 +36,7 @@ add_action('admin_enqueue_scripts', 'load_admin_custom_enqueue');
 /* Add Theme Support for Post Formats, Post Thumbnails and Automatic Feed Links */
 /***********************************************************************************************/
 	add_theme_support('post-formats', array('link', 'quote', 'gallery', 'video'));
-	add_theme_support('post-thumbnails', array('post','page','banner','service'));
+	add_theme_support('post-thumbnails', array('post','page','banner','service','proyecto'));
 	set_post_thumbnail_size(210, 210, true);
 	add_image_size('custom-blog-image', 784, 350);
 	add_theme_support('automatic-feed-links');
@@ -123,14 +124,39 @@ function damol_create_post_type(){
 		'public'      => true,
 		'hierachical' => false,
 		'supports'    => array('title','editor','excerpt','custom-fields','thumbnail','page-attributes'),
-		'taxonomies'  => array('post-tag','servicio_category'),
+		'taxonomies'  => array('post-tag', /*'servicio_category'*/'','category'),
 		'menu_icon'   => 'dashicons-exerpt-view',
+	);
+
+	/*|>>>>>>>>>>>>>>>>>>>> PROYECTOS  <<<<<<<<<<<<<<<<<<<<|*/
+	
+	$labels3 = array(
+		'name'               => __('Proyectos'),
+		'singular_name'      => __('Proyecto'),
+		'add_new'            => __('Nuevo Proyecto'),
+		'add_new_item'       => __('Agregar nuevo Proyecto'),
+		'edit_item'          => __('Editar Proyecto'),
+		'view_item'          => __('Ver Proyecto'),
+		'search_items'       => __('Buscar Proyectos'),
+		'not_found'          => __('Proyecto no encontrado'),
+		'not_found_in_trash' => __('Proyecto no encontrado en la papelera'),
+	);
+
+	$args3 = array(
+		'labels'      => $labels3,
+		'has_archive' => true,
+		'public'      => true,
+		'hierachical' => false,
+		'supports'    => array('title','editor','excerpt','custom-fields','thumbnail','page-attributes'),
+		'taxonomies'  => array('post-tag','category'),
+		'menu_icon'   => 'dashicons-hammer',
 	);
 	
 
 	/*|>>>>>>>>>>>>>>>>>>>> REGISTRAR  <<<<<<<<<<<<<<<<<<<<|*/
 	register_post_type('banner',$args);
 	register_post_type('service',$args2);
+	register_post_type('proyecto',$args3);
 }
 
 add_action( 'init', 'damol_create_post_type' );
@@ -161,7 +187,7 @@ function create_damol_category_taxonomy() {
   ); 
 
  /* categorias servicios */
- $labels2 = array(
+ /*$labels2 = array(
     'name'             => __( 'Categoría Servicio'),
     'singular_name'    => __( 'Categoría Servicio'),
     'search_items'     => __( 'Buscar Categoría Servicio'),
@@ -173,7 +199,7 @@ function create_damol_category_taxonomy() {
     'add_new_item'     => __( 'Agregar nueva categoría de Servicio' ),
     'new_item_name'    => __( 'Nuevo nombre categoría de Servicio' ),
     'menu_name'        => __( 'Categoria Servicio' ),
-  ); 		
+  ); 	*/	
 
 // Now register the taxonomy
   register_taxonomy('banner_category',array('banner'), array(
@@ -185,14 +211,14 @@ function create_damol_category_taxonomy() {
     'rewrite'          => array( 'slug' => 'banner-category' ),
   ));
 
-  register_taxonomy('servicio_category',array('servicio'), array(
+  /*register_taxonomy('servicio_category',array('servicio'), array(
     'hierarchical'     => true,
     'labels'           => $labels2,
     'show_ui'          => true,
     'show_admin_column'=> true,
     'query_var'        => true,
     'rewrite'          => array( 'slug' => 'servicio-category' ),
-  ));
+  ));*/
 
 }
 
@@ -257,7 +283,7 @@ if ( function_exists( 'add_theme_support' ) ) {
 /* Agregar campo subir imagenes  a la taxonomia categoria servicios  */
 /***********************************************************************************************/
 
-add_action ( 'servicio_category_edit_form_fields', 'damol_campos_extras', 10, 2);
+/*add_action ( 'servicio_category_edit_form_fields', 'damol_campos_extras', 10, 2);
 
 function damol_campos_extras( $tag ) {    
 	$t_id     = $tag->term_id;
@@ -308,6 +334,8 @@ function damol_guardar_campos_extras( $term_id ) {
         update_option( "category_$t_id", $cat_meta );
     }
 }
+
+*/
 
 
 
