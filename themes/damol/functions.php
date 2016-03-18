@@ -14,7 +14,7 @@ function load_custom_scripts() {
 	wp_enqueue_script('bootstrap', THEMEROOT . '/js/bootstrap.min.js', array('jquery'), '3.3.6', true);
 	//upload gallery
   	//script
-	wp_enqueue_script('custom_script', THEMEROOT . '/js/scripts.js', array('jquery'), false, true);
+	wp_enqueue_script('custom_script', THEMEROOT . '/js/script.js', array('jquery'), false, true);
 }
 
 add_action('wp_enqueue_scripts', 'load_custom_scripts');

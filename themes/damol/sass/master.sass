@@ -37,10 +37,23 @@ body,html
 	max-width       : 1107px
 	width           : 100%
 
+.mainWrapper--padding 
+	padding: 70px 0 0 0
+
 //>>> WRAPPER flex
 .wrapper-flex
 	align-content:center 
 	display      : flex
+
+//TITULOS
+.mainWrapper__title
+	border-left: 3px solid $color_damol_orange
+	color      : black
+	font-size  : 1.5em 
+	font-weight: 700
+	margin     : 0 auto
+	padding    : 0 0 0 10px 
+
 
 /***************************************************************************************/
 /**-------------------------- HEADER   -----------------------------------------------**/
@@ -150,3 +163,49 @@ body,html
 			//activo
 			&.active
 				background-color: $color_damol_orange
+
+
+/***************************************************************************************/
+/**-------------------------- ------  PORTADA     ------------------------------------**/
+/***************************************************************************************/
+
+//seccion servicios
+.sectionHomeService
+	margin   : 0 20px 
+	max-width: 720px
+	width    : 68%
+
+	
+	.sectionHomeService__content
+		flex-wrap: wrap
+		margin   : 15px auto 0
+
+	//article
+	.sectionHomeService__article
+		margin   : 0 12px 34px
+		max-width: 330px
+		width    : 46%
+		
+		//hover 
+		&:hover 
+			h3 
+				background-color: $color_damol_orange
+			img
+				+scale( 1.2 )
+				+opacity(0.7 )
+
+		//titulo 
+		h3 
+			background-color: $color_black
+			color           : white 
+			font-size       : 1.125em 
+			margin          : 0 auto
+			padding         : 14px 0
+			+transition( all 450ms ease )
+
+		//imagen
+		figure 
+			overflow: hidden
+			img
+				+transition( all 450ms ease-in-out )
+
