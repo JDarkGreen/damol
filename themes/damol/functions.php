@@ -36,7 +36,7 @@ add_action('admin_enqueue_scripts', 'load_admin_custom_enqueue');
 /* Add Theme Support for Post Formats, Post Thumbnails and Automatic Feed Links */
 /***********************************************************************************************/
 	add_theme_support('post-formats', array('link', 'quote', 'gallery', 'video'));
-	add_theme_support('post-thumbnails', array('post','page','banner','service','proyecto'));
+	add_theme_support('post-thumbnails', array('post','page','banner','service','proyecto','cliente'));
 	set_post_thumbnail_size(210, 210, true);
 	add_image_size('custom-blog-image', 784, 350);
 	add_theme_support('automatic-feed-links');
@@ -151,12 +151,37 @@ function damol_create_post_type(){
 		'taxonomies'  => array('post-tag','category'),
 		'menu_icon'   => 'dashicons-hammer',
 	);
+
+	/*|>>>>>>>>>>>>>>>>>>>> CLIENTES  <<<<<<<<<<<<<<<<<<<<|*/
+	
+	$labels4 = array(
+		'name'               => __('Clientes'),
+		'singular_name'      => __('Cliente'),
+		'add_new'            => __('Nuevo Cliente'),
+		'add_new_item'       => __('Agregar nuevo Cliente'),
+		'edit_item'          => __('Editar Cliente'),
+		'view_item'          => __('Ver Cliente'),
+		'search_items'       => __('Buscar Clientes'),
+		'not_found'          => __('Cliente no encontrado'),
+		'not_found_in_trash' => __('Cliente no encontrado en la papelera'),
+	);
+
+	$args4 = array(
+		'labels'      => $labels4,
+		'has_archive' => true,
+		'public'      => true,
+		'hierachical' => false,
+		'supports'    => array('title','editor','excerpt','custom-fields','thumbnail','page-attributes'),
+		'taxonomies'  => array('post-tag','category'),
+		'menu_icon'   => 'dashicons-universal-access-alt',
+	);
 	
 
 	/*|>>>>>>>>>>>>>>>>>>>> REGISTRAR  <<<<<<<<<<<<<<<<<<<<|*/
 	register_post_type('banner',$args);
 	register_post_type('service',$args2);
 	register_post_type('proyecto',$args3);
+	register_post_type('cliente',$args4);
 }
 
 add_action( 'init', 'damol_create_post_type' );

@@ -169,6 +169,14 @@
 
 	</section> <!-- /.sectionHomeProyects -->
 
+	<!-- Contenedor de Clientes  -->
+	<section class="sectionClients">
+		<!-- Titulos -->
+		<h2 class="mainWrapper__title text-uppercase"><?php _e( 'clientes' , 'damol-framework' ); ?></h2>
+		<br>
+		
+	</section><!-- /.sectionClients -->
+
 </main> <!-- /mainWrapper -->
 
 <!-- Footer -->

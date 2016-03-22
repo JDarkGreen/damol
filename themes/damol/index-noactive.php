@@ -103,16 +103,6 @@
 		<!-- Titulos -->
 		<h2 class="mainWrapper__title text-uppercase"><?php _e( 'proyectos realizados' , 'damol-framework' ); ?></h2>
 
-		<?php  
-			//the query 
-			$args = array(
-				'post_type' => 'proyectos'
-			);
-
-			$the_query = new Wp_Query($args);
-
-			if( $the_query->have_posts() ) :
-		?>
 
 		<!-- Contenedor position relative -->
 		<div class="section-wrapper-relative">
@@ -137,7 +127,7 @@
 
 		</div> <!-- /.section-wrapper-relative -->
 
-		<?php endif; ?>
+		
 
 	</section> <!-- /.sectionHomeProyects -->
 
