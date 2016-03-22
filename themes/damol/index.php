@@ -174,6 +174,41 @@
 		<!-- Titulos -->
 		<h2 class="mainWrapper__title text-uppercase"><?php _e( 'clientes' , 'damol-framework' ); ?></h2>
 		<br>
+
+		<?php  
+			//the query para clientes
+			$args = array(
+				'post_type' => 'cliente'
+			);
+
+			$the_query = new Wp_Query($args);
+
+			if( $the_query->have_posts() ) :
+		?>
+
+		<!-- Contenedor position relative -->
+		<div class="section-wrapper-relative">
+			<!-- Contenedor de sliders -->
+			<section id="carousel-cliente" class="sectionClients__carousel">
+				<?php while( $the_query->have_posts() ): $the_query->the_post(); ?>
+					<article class="sectionHomeProyects__article">
+						<figure>
+							<?php the_post_thumbnail('full',array('class'=>'img-responsive')); ?>
+							<span class="bg-transparence"></span>
+						</figure>
+					</article> <!-- /.sectionHomeProyects__article -->
+				<?php endwhile; ?>
+
+			</section><!-- /.sectionHomeProyects__carousel -->	
+
+			<!-- FLECHAS -->
+			<div id="proyecto-prev" class="sectionHomeProyects__carousel__arrow sectionHomeProyects__carousel__arrow--prev"></div>
+			<div id="proyecto-next" class="sectionHomeProyects__carousel__arrow sectionHomeProyects__carousel__arrow--next"></div>
+
+		</div> <!-- /.section-wrapper-relative -->
+
+		<?php endif; ?>
+
 		
 	</section><!-- /.sectionClients -->
 

@@ -15,9 +15,18 @@ var j = jQuery.noConflict();
 		prevSelector: j('#proyecto-prev'),
 		slideMargin : 15,
 		slideWidth  : 250,
+	});	
+
+
+	/*>>>>>>>>>>>> CAROUSEL PORTADA - seccion Clientes */
+
+	j('#carousel-cliente').bxSlider({
+		maxSlides   : 5,
+		moveSlides  : 1,
+		pager       : false,
+		slideMargin : 20,
+		slideWidth  : 'auto',
 	});
-
-
 
 
 

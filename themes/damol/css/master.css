@@ -345,3 +345,8 @@ body, html {
   right: 0;
   background: url("../images/arrows/arrow-right.png") no-repeat;
 }
+
+/* line 316, ../sass/master.sass */
+.sectionClients {
+  padding: 45px 20px;
+}
