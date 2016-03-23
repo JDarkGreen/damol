@@ -23,7 +23,9 @@ var j = jQuery.noConflict();
 	j('#carousel-cliente').bxSlider({
 		maxSlides   : 5,
 		moveSlides  : 1,
+		nextSelector: j('#cliente-next'),
 		pager       : false,
+		prevSelector: j('#cliente-prev'),
 		slideMargin : 20,
 		slideWidth  : 'auto',
 	});

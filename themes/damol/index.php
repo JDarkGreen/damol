@@ -102,7 +102,7 @@
 			<br>
 
 			<!-- Contenedor -->
-			<?php $link_facebook = $options['contact_fb']; ?>
+			<?php $link_facebook = $options['red_social_fb']; ?>
 			
 			<!-- Contebn -->
 			<div id="fb-root"></div>
@@ -160,8 +160,8 @@
 			</section><!-- /.sectionHomeProyects__carousel -->	
 
 			<!-- FLECHAS -->
-			<div id="proyecto-prev" class="sectionHomeProyects__carousel__arrow sectionHomeProyects__carousel__arrow--prev"></div>
-			<div id="proyecto-next" class="sectionHomeProyects__carousel__arrow sectionHomeProyects__carousel__arrow--next"></div>
+			<div id="proyecto-prev" class="sectionCarousel__arrow sectionCarousel__arrow--prev"></div>
+			<div id="proyecto-next" class="sectionCarousel__arrow sectionCarousel__arrow--next"></div>
 
 		</div> <!-- /.section-wrapper-relative -->
 
@@ -187,9 +187,9 @@
 		?>
 
 		<!-- Contenedor position relative -->
-		<div class="section-wrapper-relative">
+		<div class="section-wrapper-relative sectionClients__carousel">
 			<!-- Contenedor de sliders -->
-			<section id="carousel-cliente" class="sectionClients__carousel">
+			<section id="carousel-cliente">
 				<?php while( $the_query->have_posts() ): $the_query->the_post(); ?>
 					<article class="sectionHomeProyects__article">
 						<figure>
@@ -202,8 +202,8 @@
 			</section><!-- /.sectionHomeProyects__carousel -->	
 
 			<!-- FLECHAS -->
-			<div id="proyecto-prev" class="sectionHomeProyects__carousel__arrow sectionHomeProyects__carousel__arrow--prev"></div>
-			<div id="proyecto-next" class="sectionHomeProyects__carousel__arrow sectionHomeProyects__carousel__arrow--next"></div>
+			<div id="cliente-prev" class="sectionCarousel__arrow sectionCarousel__arrow--prev"></div>
+			<div id="cliente-next" class="sectionCarousel__arrow sectionCarousel__arrow--next"></div>
 
 		</div> <!-- /.section-wrapper-relative -->
 

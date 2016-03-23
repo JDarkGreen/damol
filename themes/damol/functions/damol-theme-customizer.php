@@ -31,24 +31,44 @@ function damol_customize_register($wp_customize) {
 	)));
 
 	####>>>>>>>>>>>> REDES SOCIALES >>>>>>>>>>>>>>>>>>
-	$wp_customize->add_section('damol_contact_fb', array(
-		'title' => __('Facebook de contacto', 'damol-framework'),
-		'description' => __('Escribe el Facebook de contacto', 'damol-framework'),
-		'priority' => 37
-	));
-	
-	$wp_customize->add_setting('damol_custom_settings[contact_fb]', array(
+	$wp_customize->add_section('damol_redes_sociales', array(
+		'title' => __('Redes Sociales', 'damol-framework'),
+		'description' => __('Sección Redes Sociales', 'damol-framework'),
+		'priority' => 41
+	));	
+	//facebook
+	$wp_customize->add_setting('damol_custom_settings[red_social_fb]', array(
 		'default' => '',
 		'type' => 'option'
 	));
-	
-	$wp_customize->add_control('damol_custom_settings[contact_fb]', array(
-		'label'    => __('Facebook de contacto', 'damol-framework'),
-		'section'  => 'damol_contact_fb',
-		'settings' => 'damol_custom_settings[contact_fb]',
+	$wp_customize->add_control('damol_custom_settings[red_social_fb]', array(
+		'label'    => __('Coloca el link de facebook de la empresa', 'damol-framework'),
+		'section'  => 'damol_redes_sociales',
+		'settings' => 'damol_custom_settings[red_social_fb]',
 		'type'     => 'text'
 	));
-
+	//youtube
+	$wp_customize->add_setting('damol_custom_settings[red_social_ytube]', array(
+		'default' => '',
+		'type' => 'option'
+	));
+	$wp_customize->add_control('damol_custom_settings[red_social_ytube]', array(
+		'label'    => __('Coloca el link de youtube de la empresa', 'damol-framework'),
+		'section'  => 'damol_redes_sociales',
+		'settings' => 'damol_custom_settings[red_social_ytube]',
+		'type'     => 'text'
+	));
+	//twitter
+	$wp_customize->add_setting('damol_custom_settings[red_social_twitter]', array(
+		'default' => '',
+		'type' => 'option'
+	));
+	$wp_customize->add_control('damol_custom_settings[red_social_twitter]', array(
+		'label'    => __('Coloca el link de twitter de la empresa', 'damol-framework'),
+		'section'  => 'damol_redes_sociales',
+		'settings' => 'damol_custom_settings[red_social_twitter]',
+		'type'     => 'text'
+	));
 
 	
 	// Contact Email
@@ -145,6 +165,37 @@ function damol_customize_register($wp_customize) {
 		'settings' => 'damol_custom_settings[contact_mapa]',
 		'type'     => 'text'
 	));
+
+	//Customizar WIDGET NOSOTROS
+	$wp_customize->add_section('damol_widget_nosotros', array(
+		'title' => __('Sección WIDGET NOSOTROS', 'damol-framework'),
+		'description' => __('Sección WIDGET NOSOTROS', 'damol-framework'),
+		'priority' => 40
+	));
+	
+	//textarea
+	$wp_customize->add_setting('damol_custom_settings[widget_nosotros]', array(
+		'default' => '',
+		'type' => 'option'
+	));
+	
+	$wp_customize->add_control('damol_custom_settings[widget_nosotros]', array(
+		'label'    => __('Escribe contenido que ira en widget nosotros en el footer', 'damol-framework'),
+		'section'  => 'damol_widget_nosotros',
+		'settings' => 'damol_custom_settings[widget_nosotros]',
+		'type'     => 'textarea'
+	));
+	//imagen
+	$wp_customize->add_setting('damol_custom_settings[image_nosotros]',array(
+		'default' => '',
+		'type'    => 'option'
+	));
+
+	$wp_customize->add_control(new WP_Customize_Upload_Control($wp_customize,'widget_nosotros',array(
+		'label'    => __('Imagen Nosotros', 'damol-framework'),
+		'section'  => 'damol_widget_nosotros',
+		'settings' => 'damol_custom_settings[image_nosotros]',
+	)));
 	
 }	
 ?>
