@@ -56,13 +56,19 @@
 					<h2 class="text-uppercase"><?php _e( 'contacto', 'damol-framework' ); ?></h2>
 
 					<!-- Direccion  -->
-					<p>asdasdasdasd</p>
+					<?php $address = $options['contact_address']; if( !empty($address) ) : ?>
+						<p><?= $address ?></p>
+					<?php endif; ?>
 
 					<!-- Telefonos -->
-					<p>Tel:</p>
+					<?php $tel = $options['contact_tel']; if( !empty($tel) ) : ?>
+						<p>Tel: <?= $tel ?></p>
+					<?php endif; ?>
 
 					<!-- Consultas Correo  -->
-					<p><?php _e( 'Consultas:', 'damol-framework' ); ?></p>
+					<?php $emails = $options['contact_emails']; if( !empty($emails) ) : ?>
+						<p><?php _e( 'Consultas:', 'damol-framework' ); ?></p>
+					<?php endif; ?>
 				</article> <!-- /. -->
 			</div> <!-- /.mainFooter__content -->			
 		</section> <!-- /.mainFooter__prefooter -->
