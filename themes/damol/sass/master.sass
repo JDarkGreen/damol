@@ -6,9 +6,14 @@
 /***************************************************************************************/
 
 $color_black       : #2f2f2f
+
+
 $color_damol_orange: #ff6600
+$color_orange_suave: #a26c3d
+
 $color_gray        : #f1eff0
 $color_gray_dark   : #c2c2c2
+$color_gray_text   : #848484
 
 /***************************************************************************************/
 /**-------------------------- RESET --------------------------------------------------**/
@@ -56,6 +61,11 @@ body,html
 	right: 0
 	background: url('../images/arrows/arrow-right.png') no-repeat
 
+//>> ITEMS FLEXBOX
+.item-flexbox
+	display: flex
+
+
 /***************************************************************************************/
 /**-------------------------- TEXTOS           ---------------------------------------**/
 /***************************************************************************************/
@@ -92,6 +102,8 @@ body,html
 	position: relative
 
 
+
+
 /***************************************************************************************/
 /**-------------------------- HEADER   -----------------------------------------------**/
 /***************************************************************************************/
@@ -106,16 +118,83 @@ body,html
 	width: 100%
 
 //>>> contenedor limite
-.mainFooter__content
-	margin   : 0 auto 
-	max-width: 1145px
-	width    : 90.6%
+.mainFooter__content 
+	display    : flex
+	margin     : 0 auto 
+	max-width  : 1145px
+	padding    : 20px
+	width      : 90.6%
 
 //>>PREFOOTER
 .mainFooter__prefooter
 	background     : url('../images/footer/bn_inicio_inferior.jpg') no-repeat
 	background-size: 100% 100%
 
+//>>Clases para cada artículo
+.item-prefooter
+	//title
+	h2 
+		color      : white
+		font-size  : 1.125em
+		font-weight: 700
+		margin     : 0 auto 12px
+
+	//parrafo
+	p 
+		color: $color_gray_text
+		font-size: 13px
+
+//item de informacion
+.item-prefooter--info
+	border-right: 2px solid rgba(255,255,255,.5)
+	max-width   : 620px
+	padding     : 0 0 0 39px
+
+	//logo
+	.logo__black
+		position: absolute
+		left: -110px
+	//parrafo
+	.info__about
+		display       : inline-block
+		margin        : 0 13px 0 0
+		width         : 65%
+		vertical-align: top
+	.info__about-img
+		display: inline-block
+
+//item de redes sociales
+.item-prefooter--sociales
+	align-content: center
+	border-right : 2px solid rgba(255,255,255,.5)
+	display      : flex
+	flex-wrap    : wrap
+	min-width    : 191px
+	padding      : 0 10px
+
+	//lista
+	.item-prefooter__social-links
+		list-style-type: none
+		margin         : 15px auto 0 
+		padding        : 0
+		li 
+			display: inline-block
+			padding: 0 5px
+			a 
+				display: block
+				height : 31px
+				width  : 31px
+
+//item informacion de contacto 
+.item-prefooter--contacto
+	padding: 0 0 0 25px
+
+	.text-orange
+		color: $color_orange_suave
+
+//>>mainFooter__info BARRA DE INFORMACIÓN
+.mainFooter__info
+	background: black
 
 /***************************************************************************************/
 /**--------------------------     LOGO  --------  ------------------------------------**/
@@ -327,10 +406,6 @@ body,html
 				+scale( 1.2 )
 			.bg-transparence
 				+opacity(1)
-
-
-
-
 
 //Seccion Clientes Carousel
 .sectionClients
