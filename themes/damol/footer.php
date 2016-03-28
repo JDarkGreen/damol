@@ -81,8 +81,9 @@
 		<!-- Barra de información -->
 		<section class="mainFooter__info">
 			<!-- Contenedor limitador  -->
-			<div class="mainFooter__content">
-				<p></p>
+			<div class="mainFooter__content mainFooter__content--center">
+				<p class="text-copyright"><?php _e('Copyright ©'.date('Y').' Damol SAC. Todos los derechos reservados.', 'damol-framework' ); ?></p>
+				<p class="text-web"><strong>www.<span>damol</span>.com.pe</strong></p>
 			</div> <!-- /.mainFooter__content -->
 		</section><!-- /.mainFooter__info -->
 		

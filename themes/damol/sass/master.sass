@@ -119,11 +119,31 @@ body,html
 
 //>>> contenedor limite
 .mainFooter__content 
-	display    : flex
-	margin     : 0 auto 
-	max-width  : 1145px
-	padding    : 20px
-	width      : 90.6%
+	display        : flex
+	justify-content: space-between
+	margin         : 0 auto 
+	max-width      : 1145px
+	padding        : 12px 20px
+	width          : 90.6%
+
+	//clases interiores
+	.text-copyright
+		color    : $color_gray_text
+		font-size: 0.75em
+
+	//text-web
+	.text-web
+		color    : white 
+		font-size: 1.5em
+		span 
+			color: $color_damol_orange
+
+//>>contenedor centrado items certicamente
+.mainFooter__content--center
+	align-items: center
+
+	p 
+		margin: 0
 
 //>>PREFOOTER
 .mainFooter__prefooter
