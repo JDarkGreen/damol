@@ -362,9 +362,61 @@ function damol_guardar_campos_extras( $term_id ) {
 
 */
 
+/***********************************************************************************************/
+/* Agregar editores para la seccion de Nosotros */
+/***********************************************************************************************/
 
+add_action( 'add_meta_boxes', 'damol_register_add_editors' );
 
+function damol_register_add_editors(){
+    add_meta_box( 'WYSIWYG_DAMOL_PERF' , __('Information Damol: MetaBox', 'damol-framework') , 'custom_damol_cb', array('page') );
+}
 
+function custom_damol_cb()
+{
+	// $post is already set, and contains an object: the WordPress post
+    global $post;
+
+    $option_content = array('editor_height'=>'200');
+
+    echo "<h2><strong>Perfil Damol: </strong></h2>";
+    $text1  = get_post_meta($post->ID, 'custom_damol_'.$post->ID.'_perfil' , true);
+  	wp_editor( htmlspecialchars_decode($text1) , 'custom_damol_'.$post->ID.'_perfil' , $option_content );
+
+  	echo "<h2><strong>Misión Damol: </strong></h2>";
+    $text1  = get_post_meta($post->ID, 'custom_damol_'.$post->ID.'_mision' , true);
+  	wp_editor( htmlspecialchars_decode($text1) , 'custom_damol_'.$post->ID.'_mision', $option_content );
+
+  	echo "<h2><strong>Visión Damol: </strong></h2>";
+    $text1  = get_post_meta($post->ID, 'custom_damol_'.$post->ID.'_vision' , true);
+  	wp_editor( htmlspecialchars_decode($text1) , 'custom_damol_'.$post->ID.'_vision' , $option_content );
+
+  	echo "<h2><strong>Valores Damol:</strong> </h2>";
+    $text1  = get_post_meta($post->ID, 'custom_damol_'.$post->ID.'_valores' , true);
+  	wp_editor( htmlspecialchars_decode($text1) , 'custom_damol_'.$post->ID.'_valores' , $option_content );
+}
+
+ 
+function custom_damol_save_postdata($post_id){
+	if (!empty($_POST['custom_damol_'.$post_id.'_perfil'])){
+ 		$data = htmlspecialchars($_POST['custom_damol_'.$post_id.'_perfil']);
+ 		update_post_meta($post_id, 'custom_damol_'.$post_id.'_perfil' , $data);
+ 	}
+	if (!empty($_POST['custom_damol_'.$post_id.'_mision'])){
+ 		$data = htmlspecialchars($_POST['custom_damol_'.$post_id.'_mision']);
+ 		update_post_meta($post_id, 'custom_damol_'.$post_id.'_mision' , $data);
+ 	}
+	if (!empty($_POST['custom_damol_'.$post_id.'_vision'])){
+ 		$data = htmlspecialchars($_POST['custom_damol_'.$post_id.'_vision']);
+ 		update_post_meta($post_id, 'custom_damol_'.$post_id.'_vision' , $data);
+ 	}
+	if (!empty($_POST['custom_damol_'.$post_id.'_valores'])){
+ 		$data = htmlspecialchars($_POST['custom_damol_'.$post_id.'_valores']);
+ 		update_post_meta($post_id, 'custom_damol_'.$post_id.'_valores' , $data);
+ 	}
+}
+ 
+add_action('save_post', 'custom_damol_save_postdata');
 
 
 /***********************************************************************************************/

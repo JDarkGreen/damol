@@ -13,7 +13,7 @@ $color_orange_suave: #a26c3d
 
 $color_gray        : #f1eff0
 $color_gray_dark   : #c2c2c2
-$color_gray_text   : #848484
+$color_gray_text   : #848484 
 
 /***************************************************************************************/
 /**-------------------------- RESET --------------------------------------------------**/
@@ -65,6 +65,10 @@ body,html
 .item-flexbox
 	display: flex
 
+//>>> FIGURE - BANNERS
+.bn_ImagePage
+	img
+		min-width: 1107px
 
 /***************************************************************************************/
 /**-------------------------- TEXTOS           ---------------------------------------**/
@@ -100,6 +104,10 @@ body,html
 //>>> WRAPPER POSITION relative
 .section-wrapper-relative
 	position: relative
+
+//>> WRAPPER CONTENIDO 
+.sectionWrapper__content
+	padding: 57px 52px 0
 
 
 
@@ -443,3 +451,38 @@ body,html
 	//contenedor de carousel
 	.sectionClients__carousel
 		padding: 0 20px
+
+
+/***************************************************************************************/
+/**--------------------------  SECCION DE NOSOTROS  ----------------------------------**/
+/***************************************************************************************/
+
+.sectionNosotros
+
+	//TITULO
+	h2 
+		border-left: 3px solid $color_damol_orange
+		font-size  : 1.375em
+		margin     : 0 0 20px 
+		padding    : 0 0 0 6px 
+
+	//parrafo
+	p 
+		color    : $color_gray_text
+		font-size: 0.8125em
+
+//secciones independientes mision y vision
+.sectionNosotros__mision,.sectionNosotros__vision
+	background: $color_damol_orange
+	color     : white 
+	padding   : 10px 
+
+	//TITULO
+	h2 
+		border-left: 3px solid rgba(0,0,0,.8) 
+		color      : white
+		+text-shadow(1px 0px 5px white)
+
+	//parrafo
+	p
+		color: white 
