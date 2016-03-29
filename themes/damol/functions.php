@@ -28,7 +28,7 @@ add_action('wp_enqueue_scripts', 'load_custom_scripts');
 function load_admin_custom_enqueue() {
     wp_enqueue_media();
     //upload gallery 
-	wp_enqueue_script('upload-gallery', THEMEROOT . '/js/media-lib-uploader.js', array('jquery'), '', true);
+	//wp_enqueue_script('upload-gallery', THEMEROOT . '/js/media-lib-uploader.js', array('jquery'), '', true);
 	//upload gallery pages
 	wp_enqueue_script('upload-gallery-pages', THEMEROOT . '/js/metabox-gallery.js', array('jquery'), '', true);
 
@@ -379,26 +379,55 @@ function attached_images_meta() {
     foreach ($screens as $screen) {
         add_meta_box(
             'attached_images_meta_box', //this is the id of the box
-            'Attached Images', //this is the title
+            'Galería de Imagenes', //this is the title
             'attached_images_meta_box', //the callback
             $screen, //the post type
-            'side' //the placement
+            'normal' //the placement
         );
     }
 }
 function attached_images_meta_box($post){
-	$args  = array('post_type'=>'attachment','post_parent'=>$post->ID);
-	$count = count( get_children($args) );
+	
+	$input_ids_img = get_post_meta($post->ID, 'imageurls_'.$post->ID , true);
+	
+	$array_images  = explode(',', $input_ids_img );
+	
+	$args  = array(
+		'post_type' => 'attachment',
+		'post__in'  => $array_images,
+	);
+	$attachment = get_posts($args);
 
-	var_dump($args);
+	//var_dump($attachment);
 
-	$input_ids_img = "";
+	foreach ($attachment as $atta ) : ?>
 
-	echo '<input id="page_gallery_ids" type="hidden" name="page_gallery_ids_'.$post->ID.'" value="'.$input_ids_img. '" />';
+		<figure style="width: 150px;height: 90px; margin: 0 5px; display: inline-block; vertical-align: top; position: relative;">
+			<a href="#" class="js-delete-image" data-id-post="<?= $post->ID; ?>" data-id-img="<?= $atta->ID ?>" style="border-radius: 50%; width: 20px;height: 20px; border: 2px solid red; color: red; position: absolute; top: -10px; right: -8px; text-decoration: none; text-align: center; background: black; font-weight: 700;">X</a>
 
-    echo '<a id="manage_gallery" data-id-post="'.$post->ID.'" href="#" class="button button-primary button-large" data-editor="content">'.$count.' Images</a>';
+			<img src="<?= $atta->guid; ?>" alt="<?= $atta->post_title; ?>" class="img-responsive" style="max-width: 100%; height: 100%; margin: 0 auto;" />
+		</figure>
+
+	<?php 
+
+	endforeach;
+
+	/*----------------------------------------------------------------------------------------------*/
+	echo "<div style='display:block; margin: 0 0 10px;'></div>";
+	/*----------------------------------------------------------------------------------------------*/
+	echo '<input id="imageurls_'.$post->ID.'" type="hidden" name="imageurls_'.$post->ID.'" value="'.$input_ids_img. '" />';
+
+    echo '<a id="add_image_btn" data-id-post="'.$post->ID.'" href="#" class="button button-primary button-large" data-editor="content">Agregar Imagen</a>';
+    echo "<p class='description'>Después de Agregar/Eliminar elemento dar click en actualizar<p>";
 }
 
+function attached_images_save_postdata($post_id){
+	if ( !empty($_POST['imageurls_'.$post_id]) ){
+		$data = htmlspecialchars( $_POST['imageurls_'.$post_id] );
+ 		update_post_meta($post_id, 'imageurls_'.$post_id , $data);
+ 	}
+}
+add_action('save_post', 'attached_images_save_postdata');
 
 
 /***********************************************************************************************/
