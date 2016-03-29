@@ -58,6 +58,14 @@
 			<?php the_post_thumbnail( 'full' , array('class' => 'img-responsive center-block') ); ?>
 		</figure> <!-- /.mainHeader__banner -->
 
+		<!-- Seccion Contenedora -->
+		<div class="container">
+			<h1 class="logo">
+				<img src="<?= IMAGES ?>/logo.png" alt="logo-damol" class="img-responsive center-block" />
+			</h1><!-- /logo -->
+		</div><!-- /.container -->
+
+
 		<?php endif; endwhile; endif; wp_reset_postdata(); ?>
 
 		<!-- NAVEGACION PRINCIPAL -->

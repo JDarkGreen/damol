@@ -24,6 +24,26 @@ body,html
 	width     : 100%
 
 
+//keyframe
++keyframes(element-estirar)
+	0%
+		+scaleX(1)
+	50%
+		+scaleX(1.8)
+		+box-shadow( 0 0 25px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(255, 255, 255, 0.6) )
+		background:  linear-gradient( 90deg, rgba(47, 47, 47, 0) 0%, rgba(47, 47, 47, 0.2) 25%, rgba(47, 47, 47 , 0.2) 75%, rgba(47, 47, 47 , 0) 100%)
+
+	100%
+		+scaleX(1)
+//keyframe
++keyframes(element-estirar-2)
+	0%
+		+scaleX(1)
+	50%
+		background: white
+	100%
+		background: $color_black
+
 
 /***************************************************************************************/
 /**-------------------------- CLASES Y OBJETOS  ---------------------------------------**/
@@ -254,17 +274,25 @@ body,html
 		margin: 0 auto
 		li 
 			border-top: 3px solid transparent
-			margin    : 2px 12px 15px
-			padding   : 15px 8px 0
+			margin    : 2px 12px 0
+			padding   : 15px 8px 15px
+			position  : relative
 			+transition( all 300ms ease )
 
 			//activo seccion actual
 			&:hover,&.current-menu-item,&.current-page-item
 				border-top: 3px solid $color_damol_orange
-
 				a 
 					color: $color_damol_orange
 
+			&:hover
+				//pero no del submenu
+				.sub-menu
+					max-height: 400px
+					//+transition( height 800ms , opacity 150ms ease )
+					li 
+						a 
+							color: white	
 			a 
 				color          : white
 				display        : block
@@ -277,6 +305,44 @@ body,html
 				//hover
 				&:hover 
 					text-decoration: none
+
+			//submenu
+			.sub-menu
+				background-color: $color_black
+				left            : -12px 
+				list-style-type : none 
+				margin          : 0 auto 
+				display         : block 
+				max-height          : 1px
+				overflow        : hidden
+				padding         : 0 
+				position        : absolute
+				z-index         : 9999
+				+transition( all 500ms ease-in-out )
+
+				li 
+					border  : none 
+					margin  : 5px 12px
+					padding : 8px
+					position: relative
+
+					//activo seccion actual
+					&:hover,&.current-menu-item,&.current-page-item
+						border: none 
+						a 
+							color: $color_damol_orange
+
+//navigation nofixed
+.mainNav--anim
+
+//navigation fixed
+.mainNav--fixed
+	left    : 0 
+	position: fixed
+	right   : 0 
+	top     : 0
+	z-index : 99999999
+	+animation(element-estirar 900ms linear)
 
 
 /***************************************************************************************/

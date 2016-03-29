@@ -29,10 +29,10 @@ add_action('wp_enqueue_scripts', 'load_custom_scripts');
 /* Add the media uploader script */
 function load_admin_custom_enqueue() {
     wp_enqueue_media();
-    //upload gallery 
-	//wp_enqueue_script('upload-gallery', THEMEROOT . '/js/media-lib-uploader.js', array('jquery'), '', true);
 	//upload gallery pages
 	wp_enqueue_script('upload-gallery-pages', THEMEROOT . '/js/metabox-gallery.js', array('jquery'), '', true);
+    //upload gallery banner services  
+	wp_enqueue_script('upload-gallery-serv', THEMEROOT . '/js/media-lib-uploader.js', array('jquery'), '', true);
 
 }
 
@@ -368,6 +368,47 @@ function damol_guardar_campos_extras( $term_id ) {
 
 */
 
+/***********************************************************************************************/
+/* Agregar METABOX para cargar BANNERS solo para servicios  */
+/***********************************************************************************************/
+
+add_action( 'add_meta_boxes', 'add_banner_service' );
+
+function add_banner_service() {
+    $screens = array( 'service' ); //add more in here as you see fit
+
+	foreach ($screens as $screen) {
+        add_meta_box(
+            'attachment_banner_service', //this is the id of the box
+            'Imagen Banner Servicio', //this is the title
+            'add_banner_service_meta_box', //the callback
+            $screen, //the post type
+            'side' //the placement
+        );
+    }
+}
+function add_banner_service_meta_box($post){ 
+
+
+?>
+	
+	<!-- Input guarda valor de metabox -->
+	<input type="hidden" id="input_img_banner_serv_<?= $post->ID ?>" name="input_img_banner_serv_<?= $post->ID ?>" value="" />
+	
+	<!-- Boton Agregar eliminar banner -->
+	<a id="btn_add_banner_serv" href="#" class="button button-primary button-large">Insertar Banner</a>
+
+<?php 
+}
+
+/* Guardamos la Data */
+function add_banner_service_save_postdata($post_id){
+	if ( !empty($_POST['input_img_banner_serv_'.$post_id]) ){
+		$data = htmlspecialchars( $_POST['input_img_banner_serv_'.$post_id] );
+ 		update_post_meta($post_id, 'input_img_banner_serv_'.$post_id , $data);
+ 	}
+}
+add_action('save_post', 'add_banner_service_save_postdata');
 
 /***********************************************************************************************/
 /* Agregar METABOX para paginas galería  */
@@ -376,7 +417,7 @@ function damol_guardar_campos_extras( $term_id ) {
 add_action( 'add_meta_boxes', 'attached_images_meta' );
 
 function attached_images_meta() {
-    $screens = array( 'post', 'page' ); //add more in here as you see fit
+    $screens = array( 'post', 'page' , 'service' ); //add more in here as you see fit
 
     foreach ($screens as $screen) {
         add_meta_box(

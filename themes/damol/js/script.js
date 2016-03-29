@@ -5,6 +5,20 @@ var j = jQuery.noConflict();
 
 	j(document).on('ready',function(){
 
+		/*>>>>>>>>>>>> STYCKY HEADER -----------------------*/
+
+		var main_menu     = j('nav.mainNav');
+		var main_menu_pos = main_menu.offset().top;
+
+		j(window).on('scroll', function(){
+			if( j(this).scrollTop() > main_menu_pos ) {
+				main_menu.addClass('mainNav--fixed');
+			}else{
+				main_menu.removeClass('mainNav--fixed').addClass('mainNav--anim');
+			}
+		});
+
+
 		/*>>>>>>>>>>>> CAROUSEL PORTADA - seccion Proyectos */
 		
 		j('#carouserl-services-home').bxSlider({
