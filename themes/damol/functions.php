@@ -32,7 +32,7 @@ function load_admin_custom_enqueue() {
 	//upload gallery pages
 	wp_enqueue_script('upload-gallery-pages', THEMEROOT . '/js/metabox-gallery.js', array('jquery'), '', true);
     //upload gallery banner services  
-	wp_enqueue_script('upload-gallery-serv', THEMEROOT . '/js/media-lib-uploader.js', array('jquery'), '', true);
+	wp_enqueue_script('upload-gallery-serv', THEMEROOT . '/js/media-lib-service.js', array('jquery'), '', true);
 
 }
 
@@ -389,14 +389,25 @@ function add_banner_service() {
 }
 function add_banner_service_meta_box($post){ 
 
-
+	$input_banner_srv = get_post_meta($post->ID, 'input_img_banner_serv_'.$post->ID , true);
 ?>
 	
 	<!-- Input guarda valor de metabox -->
-	<input type="hidden" id="input_img_banner_serv_<?= $post->ID ?>" name="input_img_banner_serv_<?= $post->ID ?>" value="" />
+	<input type="hidden" id="input_img_banner_serv_<?= $post->ID ?>" name="input_img_banner_serv_<?= $post->ID ?>" value="<?= $input_banner_srv ?>" />
 	
 	<!-- Boton Agregar eliminar banner -->
-	<a id="btn_add_banner_serv" href="#" class="button button-primary button-large">Insertar Banner</a>
+	<?php if( $input_banner_srv != -1 ) : ?>
+		<a id="btn_add_banner_serv" data-id-post="<?= $post->ID; ?>" class="js-link_banner" href="#" style="display: block">
+			<img src="<?= $input_banner_srv; ?>" alt="banner-service" style="width: 200px; height: 100px; margin: 0 auto;" />
+		</a>
+		<a id="delete_banner_srv" data-id-post="<?= $post->ID; ?>" href="#">Quitar Banner</a>
+	<?php else: ?>
+		<a id="btn_add_banner_serv" data-id-post="<?= $post->ID; ?>" class="js-link_banner" href="#" style="display: block">
+		Insertar Banner
+		</a>
+	<?php endif; ?>
+
+	<p class="description">Al agregar/eliminar elemento dar clic en actualizar</p>
 
 <?php 
 }

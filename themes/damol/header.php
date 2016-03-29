@@ -61,7 +61,13 @@
 		<!-- Seccion Contenedora -->
 		<div class="container">
 			<h1 class="logo">
-				<img src="<?= IMAGES ?>/logo.png" alt="logo-damol" class="img-responsive center-block" />
+				<a href="<?= site_url() ?>">
+					<?php if( !empty($options['logo']) ) : ?>
+						<img src="<?= $options['logo'] ?>" alt="logo-damol" class="img-responsive center-block" />
+					<?php else: ?>
+						<img src="<?= IMAGES ?>/logo.png" alt="logo-damol" class="img-responsive center-block" />
+					<?php endif; ?>
+				</a>
 			</h1><!-- /logo -->
 		</div><!-- /.container -->
 
