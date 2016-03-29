@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>CubeSlider - 3D Image Slider</title>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <meta name="description" content="Cubeslider - 3D Image Slider with Fallback" />
+        <meta name="keywords" content="jquery, css3, 3d, webkit, fallback, slider, css3, 3d transforms, slices, rotate, box, automatic" />
+		<meta name="author" content="Alban Xhaferllari" />
+        <link rel="stylesheet" type="text/css" href="css/demo.css" />
+		<link rel="stylesheet" type="text/css" href="css/classic/cubeslider.css" />
+
+	</head>
+	<body>
+		<div class="container">
+			<h1>CubeSlider <span>A 3D image slider</span></h1>
+			<div class="line"></div>
+			<div class="more">
+				<ul>
+					<li>Live Examples:</li>
+					<li><a href="index.html">Horizontal cubes</a></li>
+					<li><a href="index2.html">Single Cube</a></li>
+					<li><a href="index3.html">Vertical cubes and Link faces</a></li>
+					<li><a href="index4.html">Syncro Animatin with spread</a></li>
+					<li><a href="index5.html">Random cubes</a></li>
+					<li  class="selected"><a href="index6.html">Multicubes</a></li>
+					<li><a href="index7.html">Fallback mode</a></li>
+				</ul>
+			</div>
+			<div id="cs-slider">
+				<img src="images2/1.jpg" title="3d Abstract from Codecanyon"/>
+				<img src="images2/2.jpg" title="Evanto Marketplace"/>
+				<img src="images2/3.jpg" title="Cube Slider"/>
+				<img src="images2/4.jpg" title="The css3 slider"/>
+				<img src="images2/5.jpg" title="Great fallback for IE"/>
+				<img src="images2/6.jpg" title="Fast and simple"/>
+				<img src="images2/7.jpg" title="Images from codecanyon"/>
+			</div>
+		</div>
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/cubeslider-min.js"></script>
+		<script type="text/javascript">
+				
+				$('#cs-slider').cubeslider({
+					cubesNum: 		{rows:3, cols:3},
+					orientation:	'h',
+					spreadPixel		:0,
+					cubeSync		:10,
+					animationSpeed:400
+				});
+		</script>
+	</body>
+</html>	

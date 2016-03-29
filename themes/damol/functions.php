@@ -14,6 +14,8 @@ function load_custom_scripts() {
 	wp_enqueue_script('bootstrap', THEMEROOT . '/js/bootstrap.min.js', array('jquery'), '3.3.6', true);
 	//bootstrap
 	wp_enqueue_script('bxslider', THEMEROOT . '/js/jquery.bxslider.min.js', array('jquery'), '4.1.2', true);
+	//cube slider
+	wp_enqueue_script('cubeslider', THEMEROOT . '/js/cubeslider-min.js', array('jquery'), '2.2', true);
   	//script
 	wp_enqueue_script('custom_script', THEMEROOT . '/js/script.js', array('jquery'), false, true);
 }

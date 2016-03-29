@@ -33,6 +33,24 @@
 		</section> <!-- /.sectionNosotros__perfil -->
 
 		<!-- Seccion Slider Banner rotativo -->
+		<section class="sectionNosotros sectionNosotros__banner col-xs-12 col-lg-6">
+			<?php  
+				//Extraer galeria de pagina nosotros
+				$input_ids_img = get_post_meta( $page->ID , 'imageurls_'.$page->ID , true);
+				$array_images  = explode(',', $input_ids_img );
+
+				$args  = array(
+					'post_type' => 'attachment',
+					'post__in'  => $array_images,
+				);
+				$attachment = get_posts($args);
+			?>
+			<div id="slider_nosotros">
+				<?php foreach( $attachment as $atta ) : ?>
+					<img src="<?= $atta->guid; ?>" alt="<?= $atta->post_title; ?>" class="img-responsive" />
+				<?php endforeach; ?>
+			</div><!-- /.#slider_nosotros -->
+		</section> <!-- /.sectionNosotros sectionNosotros__banner col-xs-12 col-lg-6 -->
 		
 		<div class="clearfix"></div>
 
@@ -84,6 +102,9 @@
 		<div class="clearfix"></div>
 
 	</section><!-- /.sectionWrapper__content" -->
+
+	<!-- Linea Separadora  -->
+	<span class="line-gray-separator"></span>
 
 	<!-- Contenedor de Clientes  -->
 	<section class="sectionClients">

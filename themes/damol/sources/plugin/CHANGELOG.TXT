@@ -1,0 +1,31 @@
+v2.2
+1. Fix IE 10,11,9 bug on 3d support
+2. Fix undefined me var
+
+v2.1
+1.Fix minor bug on autoplau
+2.Version change
+
+v1.4
+1.Added responsivity
+2.Refactor code
+3.Added random function slider
+4.Html title now
+
+v1.3.2
+1.Fix Ie link
+
+v1.3.1
+1. Fix long title bug
+2. Added titleSpeed and titleEasing options
+
+v1.3
+1.Fix autoplay on IE
+2.Fix dimension get on some browsers
+
+v1.2
+
+1. fix firefox bug animation strip
+2. fix firefox bug of rotate3d, replaced with rotateX
+3. added option for hidding navigations buttons
+4. added link support

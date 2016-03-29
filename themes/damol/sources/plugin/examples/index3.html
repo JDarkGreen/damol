@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>CubeSlider - 3D Image Slider</title>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <meta name="description" content="Cubeslider - 3D Image Slider with Fallback" />
+        <meta name="keywords" content="jquery, css3, 3d, webkit, fallback, slider, css3, 3d transforms, slices, rotate, box, automatic" />
+		<meta name="author" content="Alban Xhaferllari" />
+        <link rel="stylesheet" type="text/css" href="css/demo.css" />
+		<link rel="stylesheet" type="text/css" href="css/classic/cubeslider.css" />
+
+	</head>
+	<body>
+		<div class="container">
+			<h1>CubeSlider <span>A 3D image slider</span></h1>
+			<div class="line"></div>
+			<div class="more">
+				<ul>
+					<li>Live Examples:</li>
+					<li><a href="index.html">Horizontal cubes</a></li>
+					<li><a href="index2.html">Single Cube</a></li>
+					<li class="selected"><a href="index3.html">Vertical cubes and Link faces</a></li>
+					<li ><a href="index4.html">Syncro Animatin with spread</a></li>
+					<li><a href="index5.html">Random cubes</a></li>
+					<li><a href="index6.html">Multicubes</a></li>
+					<li><a href="index7.html">Fallback mode</a></li>
+				</ul>
+			</div>
+			<div id="cs-slider">
+				<a href="http://www.google.com" target="_blank"><img src="images3/1.jpg" /></a>
+				<a href="http://www.albanx.com" target="_blank"><img src="images3/2.jpg" title="Nature"/></a>
+				<a href="http://www.yahoo.com" target="_blank"><img src="images3/3.jpg" title="Green River"/></a>
+				<a href="http://www.saranda-guide.com" target="_blank"><img src="images3/4.jpg" title="Trees and leafs"/></a>
+				<a href="http://www.vlora-guide.com" target="_blank"><img src="images3/5.jpg" /></a>
+				<a href="http://www.google.com" target="_blank"><img src="images3/6.jpg" /></a>
+			</div>
+		</div>
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/cubeslider-min.js"></script>
+		<script type="text/javascript">
+				
+				$('#cs-slider').cubeslider({
+					cubesNum: 		{rows:1, cols:7},
+					orientation:	'v',
+					spreadPixel		:0,
+					cubeSync		:100
+				});
+		</script>
+	</body>
+</html>	
