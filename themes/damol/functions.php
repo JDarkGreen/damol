@@ -27,7 +27,11 @@ add_action('wp_enqueue_scripts', 'load_custom_scripts');
 /* Add the media uploader script */
 function load_admin_custom_enqueue() {
     wp_enqueue_media();
+    //upload gallery 
 	wp_enqueue_script('upload-gallery', THEMEROOT . '/js/media-lib-uploader.js', array('jquery'), '', true);
+	//upload gallery pages
+	wp_enqueue_script('upload-gallery-pages', THEMEROOT . '/js/metabox-gallery.js', array('jquery'), '', true);
+
 }
 
 add_action('admin_enqueue_scripts', 'load_admin_custom_enqueue');
@@ -361,6 +365,41 @@ function damol_guardar_campos_extras( $term_id ) {
 }
 
 */
+
+
+/***********************************************************************************************/
+/* Agregar METABOX para paginas galería  */
+/***********************************************************************************************/
+
+add_action( 'add_meta_boxes', 'attached_images_meta' );
+
+function attached_images_meta() {
+    $screens = array( 'post', 'page' ); //add more in here as you see fit
+
+    foreach ($screens as $screen) {
+        add_meta_box(
+            'attached_images_meta_box', //this is the id of the box
+            'Attached Images', //this is the title
+            'attached_images_meta_box', //the callback
+            $screen, //the post type
+            'side' //the placement
+        );
+    }
+}
+function attached_images_meta_box($post){
+	$args  = array('post_type'=>'attachment','post_parent'=>$post->ID);
+	$count = count( get_children($args) );
+
+	var_dump($args);
+
+	$input_ids_img = "";
+
+	echo '<input id="page_gallery_ids" type="hidden" name="page_gallery_ids_'.$post->ID.'" value="'.$input_ids_img. '" />';
+
+    echo '<a id="manage_gallery" data-id-post="'.$post->ID.'" href="#" class="button button-primary button-large" data-editor="content">'.$count.' Images</a>';
+}
+
+
 
 /***********************************************************************************************/
 /* Agregar editores para la seccion de Nosotros */

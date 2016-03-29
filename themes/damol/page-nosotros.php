@@ -36,31 +36,35 @@
 		
 		<div class="clearfix"></div>
 
-		<!-- Seccion Misión -->
-		<div class="col-xs-12 col-lg-6">
-			<section class="sectionNosotros sectionNosotros__mision ">
-				<h2 class="title--white"><?php _e( 'Misión' , 'damol-framework' ); ?></h2>
-				<!-- Contenido -->
-				<?php
-					$mision= get_post_meta( $page->ID, 'custom_damol_'.$page->ID.'_mision' , true);
-					if ( !empty($mision) ) : ?>
-						<p class="text-justify"> <?= html_entity_decode( $mision ) ?> </p>
-				<?php endif;?>
-			</section> <!-- /.sectionNosotros sectionNosotros__mision -->
-		</div> <!-- /.col-xs-12 col-lg-6  -->
+		<section class="wrapper-flex item-flexbox-wrap item-flexbox-justify">
 
-		<!-- Seccion Visión -->
-		<div class="col-xs-12 col-lg-6">
-			<section class="sectionNosotros sectionNosotros__vision">
-				<h2 class="title--white"><?php _e( 'Visión' , 'damol-framework' ); ?></h2>
-				<!-- Contenido -->
-				<?php
-					$vision= get_post_meta( $page->ID, 'custom_damol_'.$page->ID.'_vision' , true);
-					if ( !empty($vision) ) : ?>
-						<p class="text-justify"> <?= html_entity_decode( $vision ) ?> </p>
-				<?php endif;?>
-			</section> <!-- /.sectionNosotros sectionNosotros__mision  -->
-		</div> <!-- /.col-xs-12 col-lg-6 -->
+			<!-- Seccion Misión -->
+			<div class="sectionNosotros sectionNosotros--bg-orange">
+				<section class="sectionNosotros__mision">
+					<h2 class="title--white"><?php _e( 'Misión' , 'damol-framework' ); ?></h2>
+					<!-- Contenido -->
+					<?php
+						$mision= get_post_meta( $page->ID, 'custom_damol_'.$page->ID.'_mision' , true);
+						if ( !empty($mision) ) : ?>
+							<p class="text-justify"> <?= html_entity_decode( $mision ) ?> </p>
+					<?php endif;?>
+				</section> <!-- /.sectionNosotros sectionNosotros__mision -->
+			</div> <!-- /. -->
+
+			<!-- Seccion Visión -->
+			<div class="sectionNosotros sectionNosotros--bg-orange">
+				<section class="sectionNosotros__vision">
+					<h2 class="title--white"><?php _e( 'Visión' , 'damol-framework' ); ?></h2>
+					<!-- Contenido -->
+					<?php
+						$vision= get_post_meta( $page->ID, 'custom_damol_'.$page->ID.'_vision' , true);
+						if ( !empty($vision) ) : ?>
+							<p class="text-justify"> <?= html_entity_decode( $vision ) ?> </p>
+					<?php endif;?>
+				</section> <!-- /.sectionNosotros sectionNosotros__mision  -->
+			</div> <!-- /.-->
+
+		</section> <!-- /section wrapper-flex -->
 
 		<div class="clearfix"></div>
 

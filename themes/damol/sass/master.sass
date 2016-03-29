@@ -64,6 +64,10 @@ body,html
 //>> ITEMS FLEXBOX
 .item-flexbox
 	display: flex
+.item-flexbox-wrap
+	flex-wrap: wrap 
+.item-flexbox-justify
+	justify-content: space-around
 
 //>>> FIGURE - BANNERS
 .bn_ImagePage
@@ -471,17 +475,21 @@ body,html
 		color    : $color_gray_text
 		font-size: 0.8125em
 
+//section background orange
+.sectionNosotros--bg-orange
+	background: $color_damol_orange  
+	margin    : 25px 0
+	width     : 48% 
+
 //secciones independientes mision y vision
 .sectionNosotros__mision,.sectionNosotros__vision
-	background: $color_damol_orange
-	color     : white 
-	padding   : 10px 
+	color  : white 
+	padding: 20px
 
 	//TITULO
 	h2 
 		border-left: 3px solid rgba(0,0,0,.8) 
 		color      : white
-		+text-shadow(1px 0px 5px white)
 
 	//parrafo
 	p
