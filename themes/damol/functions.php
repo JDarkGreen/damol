@@ -12,8 +12,11 @@ define('IMAGES', THEMEROOT.'/images');
 function load_custom_scripts() {
 	//bootstrap
 	wp_enqueue_script('bootstrap', THEMEROOT . '/js/bootstrap.min.js', array('jquery'), '3.3.6', true);
-	//bootstrap
+	//bxslider
 	wp_enqueue_script('bxslider', THEMEROOT . '/js/jquery.bxslider.min.js', array('jquery'), '4.1.2', true);
+	//google maps
+	wp_enqueue_script('google-maps', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCNMUy9phyQwIbQgX3VujkkoV26-LxjbG0');
+  	wp_enqueue_script('google-jsapi','https://www.google.com/jsapi'); 
 	//cube slider
 	wp_enqueue_script('cubeslider', THEMEROOT . '/js/cubeslider-min.js', array('jquery'), '2.2', true);
   	//script
@@ -42,12 +45,20 @@ add_action('admin_enqueue_scripts', 'load_admin_custom_enqueue');
 /* Add Theme Support for Post Formats, Post Thumbnails and Automatic Feed Links */
 /***********************************************************************************************/
 	add_theme_support('post-formats', array('link', 'quote', 'gallery', 'video'));
-	add_theme_support('post-thumbnails', array('post','page','banner','service','proyecto','cliente'));
+	add_theme_support('post-thumbnails', array('post','page','banner','servicio','proyecto','cliente'));
 	set_post_thumbnail_size(210, 210, true);
 	add_image_size('custom-blog-image', 784, 350);
 	add_theme_support('automatic-feed-links');
 
+/***********************************************************************************************/
+/* Registrar categorías para paginas y etiquetas en el tema */
+/***********************************************************************************************/
+function add_taxonomies_to_pages() {
+	register_taxonomy_for_object_type( 'post_tag', 'page' );
+ 	register_taxonomy_for_object_type( 'category', 'page' );
+}
 
+add_action( 'init', 'add_taxonomies_to_pages' );
 
 /***********************************************************************************************/
 /* Registrar Menus */
@@ -125,13 +136,13 @@ function damol_create_post_type(){
 	);
 
 	$args2 = array(
-		'labels'      => $labels2,
-		'has_archive' => true,
-		'public'      => true,
-		'hierachical' => false,
-		'supports'    => array('title','editor','excerpt','custom-fields','thumbnail','page-attributes'),
-		'taxonomies'  => array('post-tag', /*'servicio_category'*/'','category'),
-		'menu_icon'   => 'dashicons-exerpt-view',
+		'labels'          => $labels2,
+		'has_archive'     => true,
+		'public'          => true,
+		'hierachical'     => false,
+		'supports'        => array('title','editor','excerpt','custom-fields','thumbnail','page-attributes'),
+		'taxonomies'      => array('post-tag','category'),
+		'menu_icon'       => 'dashicons-exerpt-view',
 	);
 
 	/*|>>>>>>>>>>>>>>>>>>>> PROYECTOS  <<<<<<<<<<<<<<<<<<<<|*/
@@ -185,12 +196,15 @@ function damol_create_post_type(){
 
 	/*|>>>>>>>>>>>>>>>>>>>> REGISTRAR  <<<<<<<<<<<<<<<<<<<<|*/
 	register_post_type('banner',$args);
-	register_post_type('service',$args2);
+	register_post_type('servicio',$args2);
 	register_post_type('proyecto',$args3);
 	register_post_type('cliente',$args4);
+	
+	flush_rewrite_rules();
 }
 
 add_action( 'init', 'damol_create_post_type' );
+
 
 
 /***********************************************************************************************/
@@ -375,7 +389,7 @@ function damol_guardar_campos_extras( $term_id ) {
 add_action( 'add_meta_boxes', 'add_banner_service' );
 
 function add_banner_service() {
-    $screens = array( 'service' ); //add more in here as you see fit
+    $screens = array( 'servicio' ); //add more in here as you see fit
 
 	foreach ($screens as $screen) {
         add_meta_box(
@@ -428,7 +442,7 @@ add_action('save_post', 'add_banner_service_save_postdata');
 add_action( 'add_meta_boxes', 'attached_images_meta' );
 
 function attached_images_meta() {
-    $screens = array( 'post', 'page' , 'service' ); //add more in here as you see fit
+    $screens = array( 'post', 'page' , 'servicio' , 'proyecto' ); //add more in here as you see fit
 
     foreach ($screens as $screen) {
         add_meta_box(
@@ -442,6 +456,8 @@ function attached_images_meta() {
 }
 function attached_images_meta_box($post){
 	
+	$input_ids_img = -1;
+
 	$input_ids_img = get_post_meta($post->ID, 'imageurls_'.$post->ID , true);
 	
 	$array_images  = explode(',', $input_ids_img );

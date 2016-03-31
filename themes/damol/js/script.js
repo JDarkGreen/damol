@@ -19,6 +19,40 @@ var j = jQuery.noConflict();
 		});
 
 
+		/*>>>>>>>>>>>> CAROUSEL PORTADA  */
+		j('#carousel-banner-home').carousel({ interval: 4000 });
+
+		j('#carousel-banner-home').on('slide.bs.carousel', function () {
+
+			var carousel = j(this);
+
+			//Animar el título
+			carousel
+				.find('.carousel-caption__content h2')
+				.css( 'opacity' , '0' )
+
+			setTimeout(function(){  
+				carousel
+				.find('.carousel-caption__content h2')
+			  	.animate({ opacity : 1 , }, 900 );
+
+		  	}, 1000 );
+
+		  	//animar el parrafo
+		  	setTimeout(function(){  
+
+			  	carousel
+			  	.find('.carousel-caption__content p')
+				.css('right','100%')
+			  	.animate({ right: 0 , }, 1200 );
+
+		  	}, 300);
+		
+		});
+
+		
+
+
 		/*>>>>>>>>>>>> CAROUSEL PORTADA - seccion Proyectos */
 		
 		j('#carouserl-services-home').bxSlider({

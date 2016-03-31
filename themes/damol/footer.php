@@ -12,19 +12,19 @@
 				<!-- Item de Informacion -->
 				<article class="item-prefooter item-prefooter--info">
 					<!-- Ritulo -->
-					<h2 class="text-uppercase"><?php _e( 'damol sac.', 'damol-framework' ); ?></h2>
+					<h2 class="text-uppercase"><?php _e( 'damol ingenieros sac.', 'damol-framework' ); ?></h2>
 
 					<!-- Contenedor -->
 					<div class="section-wrapper-relative">
 						<!-- Logo  -->
 						<figure class="logo__black"><img src="<?= IMAGES ?>/footer/damol_logo_black.jpg" alt="damol_logo_black" class="img-responsive" /></figure>
-						<!-- Parrafo -->
-						<?php $info_nosotros = $options['widget_nosotros']; if( !empty($info_nosotros) ) : ?>
-							<p class="info__about text-justify"><?= $info_nosotros ?></p>
-						<?php endif; ?>
 						<!-- Imagen -->
 						<?php $img_nosotros = $options['image_nosotros']; if( !empty($img_nosotros) ) : ?>
 							<figure class="info__about-img"><img src="<?= $img_nosotros ?>" alt="nosotros-damol" class="img-responsive" /></figure>
+						<?php endif; ?>
+						<!-- Parrafo -->
+						<?php $info_nosotros = $options['widget_nosotros']; if( !empty($info_nosotros) ) : ?>
+							<p class="info__about text-justify"><?= $info_nosotros ?></p>
 						<?php endif; ?>
 					</div> <!-- /.item-flexbox -->
 				</article>

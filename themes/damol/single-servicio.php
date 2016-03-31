@@ -1,4 +1,8 @@
-<?php /*Template Name: Service Single*/  ?>
+<?php /**
+ * Template Name: Servicio Page
+ **/
+?>
+
 
 <!-- Header -->
 <?php get_header(); ?>
@@ -41,9 +45,8 @@
 		<h2 class="title-subcontent-pages"><?php _e( get_the_title() , 'damol-framework' ); ?></h2>
 
 		<!-- Contenido -->
-		<?php if( !empty(get_the_content()) ) : ?>
-			<?php the_content(); ?>
-		<?php endif; ?>
+		<?php the_content(); ?>
+
 
 		<!-- Imagenes de Galería -->
 		<section class="sectionService__galery">
@@ -59,9 +62,11 @@
 
 				foreach ( $attachment as $atta ) :
 			?>
-				<figure class="col-xs-12 col-lg-6">
-					<img src="<?= $atta->guid ?>" alt="<?= $atta->post_title ?>" class="img-responsive" />
-				</figure> <!-- /.col-xs-12 col-lg-6 -->
+				<div class="col-xs-12 col-lg-6">
+					<figure class="zoom">
+						<img src="<?= $atta->guid ?>" alt="<?= $atta->post_title ?>" class="img-responsive center-block" />
+					</figure> 
+				</div> <!-- /.col-xs-12 col-lg-6 -->
 
 			<?php endforeach; ?>
 
