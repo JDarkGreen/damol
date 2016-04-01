@@ -12,6 +12,8 @@ define('IMAGES', THEMEROOT.'/images');
 function load_custom_scripts() {
 	//bootstrap
 	wp_enqueue_script('bootstrap', THEMEROOT . '/js/bootstrap.min.js', array('jquery'), '3.3.6', true);
+	//fancybox
+	wp_enqueue_script('fancybox', THEMEROOT . '/js/jquery.fancybox.pack.js', array('jquery'), '2.1.5', true);
 	//bxslider
 	wp_enqueue_script('bxslider', THEMEROOT . '/js/jquery.bxslider.min.js', array('jquery'), '4.1.2', true);
 	//google maps
@@ -34,6 +36,8 @@ function load_admin_custom_enqueue() {
     wp_enqueue_media();
 	//upload gallery pages
 	wp_enqueue_script('upload-gallery-pages', THEMEROOT . '/js/metabox-gallery.js', array('jquery'), '', true);
+	//upload image categories
+	wp_enqueue_script('upload-img-cat', THEMEROOT . '/js/media-lib-uploader.js', array('jquery'), '', true);
     //upload gallery banner services  
 	wp_enqueue_script('upload-gallery-serv', THEMEROOT . '/js/media-lib-service.js', array('jquery'), '', true);
 
@@ -76,7 +80,7 @@ add_action('init', 'register_my_menus');
 /* Agregando nuevos SIDEBARS y secciones para widgets */
 /***********************************************************************************************/	
 
-if (function_exists('register_sidebar')) {
+if (function_exists('register_sidebar') ) {
 	register_sidebar(
 		array(
 			'name'          => __('PreHeaderBanner Sidebar', 'damol-framework'),
@@ -383,6 +387,63 @@ function damol_guardar_campos_extras( $term_id ) {
 */
 
 /***********************************************************************************************/
+/* Agregar campo subir imagenes  a la taxonomia categoria   */
+/***********************************************************************************************/
+
+add_action ( 'category_edit_form_fields', 'damol_campos_extras', 10, 2);
+
+function damol_campos_extras( $tag ) {    
+	$t_id     = $tag->term_id;
+	$cat_meta = get_option( "category_$t_id");
+?>
+
+	<tr class="form-field">
+		<th scope="row" valign="top"><label for="cat_Image_url"><?php _e('Url de la Imagen'); ?></label></th>
+		<td>
+			<input type="text" name="Cat_meta[img]" id="Cat_meta[img]" size="3" style="width:60%;" value="<?php echo $cat_meta['img'] ? $cat_meta['img'] : ''; ?>"><br />
+            <span class="description"><?php _e('Imagen para la categoría, usar http://'); ?></span>
+			
+			<?php if( !empty( $cat_meta['img'] ) ) : ?>
+            	<p></p>
+				<img src="<?=  $cat_meta['img'] ?>" alt="" style="width: 200px; height: 150px;" />
+			<?php endif; ?>
+            
+            <p></p>
+
+            <button id="btn_to_gallery" class="button button-primary">
+            	<?php if( !empty( $cat_meta['img'] ) ) : ?>
+            		Actualizar Imagen
+            	<?php else: ?>
+            		Cargar Imagen
+            	<?php endif; ?>
+            </button>
+        </td>
+	</tr>
+ 
+<?php
+}
+
+//>>>>>>> GUARDAR LA DATA
+add_action( 'edited_category', 'damol_guardar_campos_extras', 10, 2);
+
+function damol_guardar_campos_extras( $term_id ) {
+    if ( isset( $_POST['Cat_meta'] ) ) {
+		$t_id     = $term_id;
+		$cat_meta = get_option( "category_$t_id");
+		$cat_keys = array_keys($_POST['Cat_meta']);
+        
+        foreach ($cat_keys as $key){
+            if ( isset($_POST['Cat_meta'][$key]) ){
+                $cat_meta[$key] = $_POST['Cat_meta'][$key];
+            }
+        }
+        //Guardamos las opciones
+        update_option( "category_$t_id", $cat_meta );
+    }
+}
+
+
+/***********************************************************************************************/
 /* Agregar METABOX para cargar BANNERS solo para servicios  */
 /***********************************************************************************************/
 
@@ -463,16 +524,20 @@ function attached_images_meta_box($post){
 	$array_images  = explode(',', $input_ids_img );
 	
 	$args  = array(
-		'post_type' => 'attachment',
-		'post__in'  => $array_images,
+		'post_type'      => 'attachment',
+		'post__in'       => $array_images,
+		'posts_per_page' => -1,
 	);
 	$attachment = get_posts($args);
 
+	#var_dump($attachment);
+
 	//var_dump($attachment);
+	echo "<section style='display:flex; flex-wrap: wrap;'>";
 
 	foreach ($attachment as $atta ) : ?>
 
-		<figure style="width: 150px;height: 90px; margin: 0 5px; display: inline-block; vertical-align: top; position: relative;">
+		<figure style="width: 25%;height: 90px; margin: 0 10px 20px; display: inline-block; vertical-align: top; position: relative;">
 			<a href="#" class="js-delete-image" data-id-post="<?= $post->ID; ?>" data-id-img="<?= $atta->ID ?>" style="border-radius: 50%; width: 20px;height: 20px; border: 2px solid red; color: red; position: absolute; top: -10px; right: -8px; text-decoration: none; text-align: center; background: black; font-weight: 700;">X</a>
 
 			<img src="<?= $atta->guid; ?>" alt="<?= $atta->post_title; ?>" class="img-responsive" style="max-width: 100%; height: 100%; margin: 0 auto;" />
@@ -481,6 +546,8 @@ function attached_images_meta_box($post){
 	<?php 
 
 	endforeach;
+
+	echo "</section>";
 
 	/*----------------------------------------------------------------------------------------------*/
 	echo "<div style='display:block; margin: 0 0 10px;'></div>";

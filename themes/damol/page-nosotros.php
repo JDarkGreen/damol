@@ -87,7 +87,7 @@
 		<div class="clearfix"></div>
 
 		<!-- Seccion Valores -->
-		<section class="sectionNosotros sectionNosotros__valores col-xs-12 col-lg-6">
+		<section class="sectionNosotros sectionNosotros__valores col-xs-12">
 			<h2><?php _e( 'Valores' , 'damol-framework' ); ?></h2>
 
 			<!-- Contenido -->

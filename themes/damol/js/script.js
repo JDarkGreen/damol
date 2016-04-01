@@ -51,8 +51,6 @@ var j = jQuery.noConflict();
 		});
 
 		
-
-
 		/*>>>>>>>>>>>> CAROUSEL PORTADA - seccion Proyectos */
 		
 		j('#carouserl-services-home').bxSlider({
@@ -90,6 +88,16 @@ var j = jQuery.noConflict();
 				autoplayInterval: 2000,
 			});
 		}
+
+		/****************** GALERIA  ************************/
+		//Imagenes en la seccion servicios
+		j("a.grouped_elements").fancybox({
+			'transitionIn'	:	'elastic',
+			'transitionOut'	:	'elastic',
+			'speedIn'		:	600, 
+			'speedOut'		:	200, 
+			'overlayShow'	:	false
+		});
 
 
 	});

@@ -13,7 +13,7 @@ $color_orange_suave: #a26c3d
 
 $color_gray        : #f1eff0
 $color_gray_dark   : #c2c2c2
-$color_gray_text   : #848484 
+$color_gray_text   : #848484
 
 /***************************************************************************************/
 /**-------------------------- RESET --------------------------------------------------**/
@@ -359,7 +359,7 @@ body,html
 	position: fixed
 	right   : 0 
 	top     : 0
-	z-index : 99999999
+	z-index : 999
 	+animation(element-estirar 900ms linear)
 
 
@@ -594,6 +594,25 @@ body,html
 .sectionNosotros__valores
 	margin: 0 auto 27px
 
+	//lista 
+	ul 
+		list-style-type: none 
+		li 
+			color    : $color_gray_text
+			font-size: 0.8125em
+
+			&:before
+				+border-radius( 50% )
+				background    : $color_damol_orange
+				color         : $color_gray_text
+				content       : " " /* Insert content that looks like bullets */
+				display       : inline-block 
+				height        : 8px 
+				margin        : -3px 10px 0 0
+				vertical-align: middle
+				width         : 8px 
+
+
 /***************************************************************************************/
 /**--------------------------  SECCION DE SERVICIOS ----------------------------------**/
 /***************************************************************************************/
@@ -672,6 +691,71 @@ body,html
 		min-width : 250px
 		padding   : 13px 55px 
 		position  : absolute
+
+
+//SINGLE DE CADA PROJECTO DE LA PAGINA PROJECTOS
+
+//informacion del projecto
+.sectionProjectos__single-project
+	word-break: break-all
+
+//galeria del projecto
+.sectionProjectos__single-project__gallery
+	figure 
+		height  : 188px
+		margin  : 0 auto 15px
+		overflow: hidden
+		width   : 188px
+
+		&:hover
+			img 
+				+scale( 1.3 )
+
+		img
+			max-width: 100%
+			height   : 100%
+			+transition( all 600ms ease )
+
+
+
+
+//aside de categoria y sus projectos respectivos
+.sectionProjectos__categories
+	margin   : 0 auto 
+	max-width: 215px 
+	width    : 100% 
+
+	//titulo
+	.title-category
+		background: $color_damol_orange
+		color     : white 
+		font-size : 18px  
+		margin    : 0 auto 7px
+		padding   : 15px 18px 
+
+	//lista
+	.list_project_by_category
+		list-style-type: none
+		margin         : 0 auto 
+		padding        : 0
+
+		li 
+			a 	
+				background     : gray
+				border         : 2px solid gray 
+				color          : white  
+				display        : block
+				margin         : 0 auto 5px 
+				padding        : 15px 18px 
+				text-decoration: none
+				+transition( all 500ms ease)
+
+				&.active,&:hover 
+					color          : black  
+					background     : white 
+
+
+
 
 
 /***************************************************************************************/
