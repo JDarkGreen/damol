@@ -169,7 +169,7 @@ function damol_create_post_type(){
 		'public'      => true,
 		'hierachical' => false,
 		'supports'    => array('title','editor','excerpt','custom-fields','thumbnail','page-attributes'),
-		'taxonomies'  => array('post-tag','category'),
+		'taxonomies'  => array('post-tag','category','damol_empresa'),
 		'menu_icon'   => 'dashicons-hammer',
 	);
 
@@ -212,7 +212,7 @@ add_action( 'init', 'damol_create_post_type' );
 
 
 /***********************************************************************************************/
-/* Registrar nueva taxomomia para  nuevos tipos de post  */
+/* Registrar nuevas taxomomias  */
 /***********************************************************************************************/	
 
 //create a custom taxonomy
@@ -235,20 +235,20 @@ function create_damol_category_taxonomy() {
     'menu_name'        => __( 'Categoria Banner' ),
   ); 
 
- /* categorias servicios */
- /*$labels2 = array(
-    'name'             => __( 'Categoría Servicio'),
-    'singular_name'    => __( 'Categoría Servicio'),
-    'search_items'     => __( 'Buscar Categoría Servicio'),
-    'all_items'        => __( 'Todas Categorías del Servicio' ),
-    'parent_item'      => __( 'Categoría padre del Servicio' ),
+ /* EMPRESAS */
+ $labels2 = array(
+    'name'             => __( 'Empresa'),
+    'singular_name'    => __( 'Empresa'),
+    'search_items'     => __( 'Buscar Empresa'),
+    'all_items'        => __( 'Todas Empresa' ),
+    'parent_item'      => __( 'Categoría padre Empresa' ),
     'parent_item_colon'=> __( 'Categoría padre:' ),
-    'edit_item'        => __( 'Editar categoría de Servicio' ), 
-    'update_item'      => __( 'Actualizar categoría de Servicio' ),
-    'add_new_item'     => __( 'Agregar nueva categoría de Servicio' ),
-    'new_item_name'    => __( 'Nuevo nombre categoría de Servicio' ),
-    'menu_name'        => __( 'Categoria Servicio' ),
-  ); 	*/	
+    'edit_item'        => __( 'Editar Empresa' ), 
+    'update_item'      => __( 'Actualizar Empresa' ),
+    'add_new_item'     => __( 'Agregar nueva Empresa' ),
+    'new_item_name'    => __( 'Nuevo nombre Empresa' ),
+    'menu_name'        => __( 'Empresa' ),
+  ); 	
 
 // Now register the taxonomy
   register_taxonomy('banner_category',array('banner'), array(
@@ -260,14 +260,14 @@ function create_damol_category_taxonomy() {
     'rewrite'          => array( 'slug' => 'banner-category' ),
   ));
 
-  /*register_taxonomy('servicio_category',array('servicio'), array(
+  register_taxonomy('damol_empresa',array('proyecto'), array(
     'hierarchical'     => true,
     'labels'           => $labels2,
     'show_ui'          => true,
     'show_admin_column'=> true,
     'query_var'        => true,
-    'rewrite'          => array( 'slug' => 'servicio-category' ),
-  ));*/
+    'rewrite'          => array( 'slug' => 'damol-empresa' ),
+  ));
 
 }
 
