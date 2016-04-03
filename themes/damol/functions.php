@@ -46,6 +46,21 @@ function load_admin_custom_enqueue() {
 add_action('admin_enqueue_scripts', 'load_admin_custom_enqueue');
 
 /***********************************************************************************************/
+/* Customizar Logo Login de WORDPRESS ADMIN PANEL */
+/***********************************************************************************************/
+
+function login_logo(){ ?>	
+	<style type="text/css">
+		body.login #login h1 a{
+			background-image: url( "<?= IMAGES ?>/custom-login-logo.jpg" );
+		}
+	</style>
+<?php }
+
+add_action('login_enqueue_scripts','login_logo');
+
+
+/***********************************************************************************************/
 /* Add Theme Support for Post Formats, Post Thumbnails and Automatic Feed Links */
 /***********************************************************************************************/
 	add_theme_support('post-formats', array('link', 'quote', 'gallery', 'video'));
