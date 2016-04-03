@@ -741,7 +741,12 @@ body,html
 		padding        : 0
 
 		//panel
+		.panel
+			+border-radius( 0px )
+
+		//panel heading
 		.panel-heading
+			+border-radius( 0px )
 			+transition( all 500ms ease)
 			background: gray
 			border    : 2px solid gray 
@@ -754,6 +759,22 @@ body,html
 					margin         : 0 auto 5px 
 					padding        : 15px 18px 
 					text-decoration: none
+
+		//cuerpo del panel
+		.panel-body
+			border-top: 2px solid black !important
+			border    : 2px solid black 
+			a 
+				color          : black
+				display        : block 
+				margin         : 0 0 5px 
+				text-decoration: none
+				+transition( all 500ms ease)
+
+				//activo y hover
+				&.active, &:hover 
+					color: $color_damol_orange
+					padding: 0 0 0 10px
 
 		li 
 			a 	

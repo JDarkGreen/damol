@@ -3,7 +3,11 @@
 <!-- Header -->
 <?php get_header();
 	global $post; #var_dump($post);
-	$page = get_page_by_title( 'proyecto ingenieria' ); #var_dump($page);
+
+	//
+	$category_post = get_the_category($post->ID);  #var_dump($category_post);
+
+	$page = get_page_by_title( "proyecto" . " " . $category_post[0]->slug  ); var_dump($page);
 
 ?>
 
@@ -82,25 +86,55 @@
 						<?= $cat[0]->name; ?>
 					</h2><!-- /title_category -->
 
-					<ul class="list_project_by_category">
-						<?php  
-					        $args = array(
-								'orderby'   => 'title',
-								'order'     => 'ASC',
-								'category'  => $cat[0]->name,
-								'post_type' => 'proyecto',
- 					        );
+					<!-- Contenedor Accordeon -->
+					<div class="list_project_by_category panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 
-					        $all_project = get_posts( $args );  #var_dump( $all_project);
+						<?php 
+							$args = array(
+								'order'      => 'ASC',
+								'orderby'    => 'title',
+								'hide_empty' => false,
+							);
+							$empresas = get_terms( 'damol_empresa', $args  ); #var_dump($empresas);
 
-					        $i = 0;
+							$i = 0;
 
-					        foreach( $all_project as $project ) :
+							foreach( $empresas as $empresa ) :
 						?>
-						<li><a class="<?= $project->post_title === $post->post_title ? 'active' : '' ?>" href="<?= $project->guid ?>"><?= $project->post_title ?></a></li>
-						
+							<div class="panel panel-default">
+								<div class="panel-heading" role="tab" id="heading<?= $empresa->term_id; ?>">
+								    <h4 class="panel-title">
+								    	<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse<?= $empresa->term_id; ?>" aria-expanded="true" aria-controls="collapse<?= $empresa->term_id; ?>"><?= $empresa->name; ?></a>
+								    </h4> <!-- /.panel-title -->
+								</div> <!-- /.panel-heading -->
+								<div id="collapse<?= $empresa->term_id; ?>" class="panel-collapse collapse <?= $i == 0 ? 'in' : '' ?>" role="tabpanel" aria-labelledby="heading<?= $empresa->term_id; ?>">
+								    <div class="panel-body">
+										<?php  
+									        $args = array(
+												'category_name' => $cat[0]->name,
+												'order'         => 'ASC',
+												'orderby'       => 'title',
+												'post_type'     => 'proyecto',
+												'tax_query' => array(
+													array(
+														'taxonomy'         => 'damol_empresa',
+														'field'            => 'slug',
+														'terms'            =>  $empresa->name,
+													)
+												)
+				 					        );
+
+									        $all_project = get_posts( $args );  #var_dump( $all_project);
+
+									        foreach( $all_project as $project ) :
+										?>	
+											<a class="<?= $project->post_title === $post->post_title ? 'active' : '' ?>" href="<?= $project->guid ?>"><?= $project->post_title ?></a>
+										<?php endforeach; ?>							    	
+								    </div><!-- /.panel-body -->
+								</div> <!-- /.panel-collapse -->
+							</div> <!-- /.panel panel-default -->
 						<?php $i++; endforeach; ?>
-					</ul><!-- /.list_project_by_category -->
+					</div><!-- /.list_project_by_category -->
 				</aside><!-- /.sectionProjectos__categories -->
 			</div><!-- col-xs-4 -->
 		</div><!-- /.row -->
