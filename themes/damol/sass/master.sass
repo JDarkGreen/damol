@@ -102,6 +102,25 @@ body,html
 	margin    : 0 2% 
 
 
+//>>>> BOTON TOP UP de la Página
+.btn__top-page
+	background         : url("../images/arrows/arrowup.png") no-repeat $color_damol_orange
+	background-position: 50%
+	display            : block 
+	height             : 42px 
+	margin             : 18px 22px 0
+	width              : 42px
+	+box-shadow( -4px 3px 0 rgba(0,0,0,.3) )
+	+transition( all 300ms ease )
+
+	//hover 
+	&:hover 
+		+box-shadow( -4px 3px 0 black )
+		+scale( 1.2 )
+		background-color: rgba(0,0,0,.3)
+
+
+
 /***************************************************************************************/
 /**-------------------------- TEXTOS           ---------------------------------------**/
 /***************************************************************************************/

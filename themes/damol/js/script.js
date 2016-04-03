@@ -5,6 +5,16 @@ var j = jQuery.noConflict();
 
 	j(document).on('ready',function(){
 
+		/*>>>>>>>>>>>> BOTON UP DIRIGE ARRIBA DE LA PÁGINA -----------  */
+
+		var btn_to_up = j(".btn__top-page");
+		btn_to_up.on('click',function(e){
+			e.preventDefault();
+			//dirigir arriba de la página
+			j('html, body').animate({scrollTop : 0}, 800);
+			return false;
+		});
+
 		/*>>>>>>>>>>>> STYCKY HEADER -----------------------*/
 
 		var main_menu     = j('nav.mainNav');
