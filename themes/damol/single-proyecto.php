@@ -90,10 +90,33 @@
 					<div class="list_project_by_category panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 
 						<?php 
-							$args = array(
+					        $args1 = array(
+								'category_name' => $cat[0]->name,
+								'order'         => 'ASC',
+								'orderby'       => 'title',
+								'post_type'     => 'proyecto',
+ 					        );
+
+					        $all_project1 = get_posts( $args1 ); #var_dump($all_project1);
+
+					        if( count($all_project1) > 0 ) :
+
+					        $arra = array();
+					        foreach ( $all_project1 as $pro ) {
+					        	$terminos = wp_get_post_terms($pro->ID, 'damol_empresa' );
+
+					        	foreach ($terminos as $termi ) {
+					        		array_push( $arra , $termi->term_id );
+					        	}
+					        }
+
+					        $arra = array_unique($arra);
+					        $arra = implode(",", $arra ); #var_dump($arra);
+					        
+					        $args = array(
 								'order'      => 'ASC',
 								'orderby'    => 'title',
-								'hide_empty' => false,
+								'include'    =>  $arra,
 							);
 							$empresas = get_terms( 'damol_empresa', $args  ); #var_dump($empresas);
 
@@ -133,7 +156,7 @@
 								    </div><!-- /.panel-body -->
 								</div> <!-- /.panel-collapse -->
 							</div> <!-- /.panel panel-default -->
-						<?php $i++; endforeach; ?>
+						<?php $i++; endforeach; endif; //cerrar endif si esta vacio ?>
 					</div><!-- /.list_project_by_category -->
 				</aside><!-- /.sectionProjectos__categories -->
 			</div><!-- col-xs-4 -->
