@@ -57,8 +57,9 @@
 								$array_images  = explode(',', $input_ids_img );
 					
 								$args  = array(
-									'post_type' => 'attachment',
-									'post__in'  => $array_images,
+									'post_type'      => 'attachment',
+									'post__in'       => $array_images,
+									'posts_per_page' => -1,
 								);
 								$attachment = get_posts($args); 
 
