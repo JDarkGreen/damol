@@ -38,12 +38,12 @@
 				<div class="sectionContacto__info__office center-block">
 					<h2 class="text-uppercase"><?php _e( 'oficinas principales' , 'damol-framework' ); ?></h2>
 					<p>
-						Tel: (01) 3225284 - (01) 3225285 <br /><br />
-						wcollachagua@damol.com.pe <br /><br />
-						administracion@damol.com.pe
+						<i class="icon icon--tel"></i> Tel: (01) 3225284 - (01) 3225285 <br /><br />
+						<i class="icon icon--contact"></i> wcollachagua@damol.com.pe <br /><br />
+						<i class="icon icon--contact"></i> administracion@damol.com.pe
 					</p>
-					<span>
-						<i></i>
+					<span class="line-orange"> <i class="line-orange__icon"></i>
+						<i class="icon icon--address"></i>
 							Ofic. Lima: Cal. María José de Arce N° 225
 							Urb. Maranga <br /> San Miguel - Lima - Perú
 					</span>

@@ -502,7 +502,7 @@ body,html
 
 	//title con color naranja
 	h2 
-		color: $color_damol_orange
+		color: white
 
 	//CAROUSEL
 	.bx-wrapper
@@ -587,7 +587,7 @@ body,html
 
 	//parrafo
 	p 
-		color    : $color_gray_text
+		color    : black
 		font-size: 0.8125em
 
 //section background orange
@@ -611,14 +611,14 @@ body,html
 		color: white 
 
 //section valores
-.sectionNosotros__valores
+.sectionNosotros__valores , .sectionService__content
 	margin: 0 auto 27px
 
 	//lista 
 	ul 
 		list-style-type: none 
 		li 
-			color    : $color_gray_text
+			color    : black
 			font-size: 0.8125em
 
 			&:before
@@ -833,7 +833,7 @@ body,html
 		font-weight   : 700
 		margin        : 0 0 13px 29px 
 		text-align    : left
-		text-transform: capitalize
+		/*text-transform: capitalize*/
 
 	span 
 		color      : rgba( 0 ,0 , 0 , .8 )
@@ -844,7 +844,7 @@ body,html
 		padding    : 10px 
 		position   : relative
 
-		i 
+		i.line-orange__icon
 			background : transparent 
 			border-left: 2px solid #fb9f20 
 			border-top : 2px solid #fb9f20 
@@ -854,6 +854,26 @@ body,html
 			top        : 0
 			width      : 40px
 
+	//iconos miniatura
+	.icon 
+		background-repeat: repeat 
+		background-size  : 100% 100% 
+		display          : inline-block
+		height           : 20px 
+		margin           : 0 5px 0 0
+		vertical-align   : top
+		width            : 20px
+	
+	//direccion
+	.icon--address
+		background-image: url('../images/iconos/icono_contacto_direccion.png')	
+	//contacto
+	.icon--contact 
+		background-image: url('../images/iconos/icono_contacto_sobre.png')	
+	//telefono
+	.icon--tel 
+		background-image: url('../images/iconos/icono_contacto_telefono.png')
+	
 
 //>>>> mapa
 .sectionContacto__mapa

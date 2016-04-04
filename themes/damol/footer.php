@@ -67,7 +67,7 @@
 
 					<!-- Consultas Correo  -->
 					<?php $emails = $options['contact_email']; if( !empty($emails) ) : ?>
-						<p><?php _e( 'Consultas:', 'damol-framework' ); 
+						<p><?php _e( 'Consultas: ', 'damol-framework' ); 
 							$emails = explode(',', $emails);
 							foreach ($emails as $mail ) {
 								echo "<span class='text-orange'>" . $mail . "</span><br />";
