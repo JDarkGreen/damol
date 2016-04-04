@@ -7,7 +7,7 @@
 	//
 	$category_post = get_the_category($post->ID);  #var_dump($category_post);
 
-	$page = get_page_by_title( "proyecto" . " " . $category_post[0]->slug  ); var_dump($page);
+	$page = get_page_by_title( "proyecto" . " " . $category_post[0]->slug  ); #var_dump($page);
 
 ?>
 
