@@ -26,7 +26,7 @@
 	<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
-
+	
 	<?php $options = get_option('damol_custom_settings'); ?>
 
 	<!-- Header -->
@@ -74,14 +74,14 @@
 
 		<?php endif; endwhile; endif; wp_reset_postdata(); ?>
 
-		<!-- NAVEGACION PRINCIPAL -->
-		<nav class="mainNav">
+		<!-- NAVEGACION PRINCIPAL SOLO EN DESKTOP DESAPARECE EN MOBILE-->
+		<nav class="mainNav hidden-xs">
 			<?php wp_nav_menu(
 				array(
 					'menu_class'     => 'list-inline text-center',
 					'theme_location' => 'main-menu'
 				));
 			?>
-		</nav> <!-- /.mainNav -->
+		</nav> <!-- /.mainNav hidden-xs -->
 
 	</header> <!-- /mainHeader -->

@@ -10,6 +10,8 @@ define('IMAGES', THEMEROOT.'/images');
 /* Load JS Files */
 /***********************************************************************************************/
 function load_custom_scripts() {
+	//slidebars
+	wp_enqueue_script('slidebars', THEMEROOT . '/js/slidebars.min.js', array('jquery'), '0.10.3', true);
 	//bootstrap
 	wp_enqueue_script('bootstrap', THEMEROOT . '/js/bootstrap.min.js', array('jquery'), '3.3.6', true);
 	//fancybox

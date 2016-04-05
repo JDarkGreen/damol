@@ -8,6 +8,9 @@
 <!-- Header -->
 <?php get_header(); ?>
 
+<!-- Contenedor SB SITE responsive libreria SLIDEBARS -->
+<section id="sb-site">
+
 <!-- Incluir seccion de banner -->
 <?php  
 	$terms = ""; //el termino a pasar
@@ -185,3 +188,13 @@
 
 <!-- Footer -->
 <?php get_footer(); ?>
+
+
+<!-- Contenedor SB SITE responsive libreria SLIDEBARS -->
+</section>
+
+<!-- Navegacion responsive solo en mobiles  -->
+<div class="sb-slidebar sb-left">
+  <!-- Your left Slidebar content. -->
+</div>
+
