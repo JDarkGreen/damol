@@ -7,6 +7,8 @@
 	//
 	$category_post = get_the_category($post->ID);  #var_dump($category_post);
 
+
+
 	$page = get_page_by_title( "proyecto" . " " . $category_post[0]->slug  ); #var_dump($page);
 
 ?>
@@ -51,6 +53,7 @@
 					<!-- Galería -->
 					<section class="sectionProjectos__single-project__gallery">
 						<div class="row">
+
 							<?php  
 								//Obtener de la galería	
 								$input_ids_img = get_post_meta($post->ID, 'imageurls_'.$post->ID , true);
@@ -123,6 +126,9 @@
 
 							$i = 0;
 
+							$terms_post = wp_get_post_terms($post->ID, 'damol_empresa' );
+							$term_post  = $terms_post[0]->slug;
+
 							foreach( $empresas as $empresa ) :
 						?>
 							<div class="panel panel-default">
@@ -131,7 +137,7 @@
 								    	<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse<?= $empresa->term_id; ?>" aria-expanded="true" aria-controls="collapse<?= $empresa->term_id; ?>"><?= $empresa->name; ?></a>
 								    </h4> <!-- /.panel-title -->
 								</div> <!-- /.panel-heading -->
-								<div id="collapse<?= $empresa->term_id; ?>" class="panel-collapse collapse <?= $i == 0 ? 'in' : '' ?>" role="tabpanel" aria-labelledby="heading<?= $empresa->term_id; ?>">
+								<div id="collapse<?= $empresa->term_id; ?>" class="panel-collapse collapse <?= $empresa->slug == $term_post ? 'in' : '' ?>" role="tabpanel" aria-labelledby="heading<?= $empresa->term_id; ?>">
 								    <div class="panel-body">
 										<?php  
 									        $args = array(
