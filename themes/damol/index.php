@@ -53,44 +53,27 @@
 						'order'      => 'ASC'
 					);
 
-					$categories = get_categories($args);
+					$categories = get_terms( 'category', $args );
 
-					#var_dump($categories);["term_id]nametaxonomycat_ID
-					$cats = [];
+					#var_dump($categories);
 
-					foreach ($categories as $cat) { $cats[] = $cat->cat_ID;	}
-					$cats = implode(",", $cats );
-
-					//EL QUERY para mostrar los posts de esas categorias
-					$array = array(
-						'category'   => $cats ,
-						'hide_empty' => false,
-						'order'      => 'ASC',
-						'orderby'    => 'menu_order',
-						'post_type'  => 'service',
-					);
-
-					$services = get_posts( $array );
-
-					#var_dump($services);
-
-					foreach( $services as $serv ) : 
+					foreach( $categories as $cat ) : 
 				?>
 					<article class="sectionHomeService__article">
 						<?php 
-							if( has_post_thumbnail( $serv->ID ) ) : 
+							$t_id     = $cat->term_id;
+							$cat_meta = get_option( "category_$t_id");
+							$image    = $cat_meta['img']; 
 						?>
 							<figure>
-								<?= get_the_post_thumbnail( $serv->ID ,'full', array('class'=>'img-responsive') ) ?>
+								<?php if( !empty($image)) : ?>
+									<img src="<?= $image ?>" alt="<?= $cat->name ?>" class="img-responsive">
+								<?php else: ?>
+									<img src="http://lorempixel.com/980/554/" alt="<?= $cat->name ?>" class="img-responsive">
+								<?php endif; ?>
 							</figure>
-						<?php endif; ?>
 						<h3 class="text-uppercase text-center">
-							<strong>
-								<?php 
-									$categoria = get_the_category($serv->ID);
-									_e( $categoria[0]->name , 'damol-framework' );
-								?>
-							</strong>
+							<strong><?= $cat->name; ?></strong>
 						</h3>
 					</article> <!-- /.sectionHomeService__article -->
 				<?php endforeach; ?>
