@@ -69,7 +69,7 @@
 								<?php if( !empty($image)) : ?>
 									<img src="<?= $image ?>" alt="<?= $cat->name ?>" class="img-responsive">
 								<?php else: ?>
-									<img src="http://lorempixel.com/980/554/" alt="<?= $cat->name ?>" class="img-responsive">
+									<img src="http://lorempixel.com/500/283/" alt="<?= $cat->name ?>" class="img-responsive">
 								<?php endif; ?>
 							</figure>
 						<h3 class="text-uppercase text-center">
