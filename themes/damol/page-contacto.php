@@ -37,15 +37,19 @@
 			<div class="col-xs-6">
 				<div class="sectionContacto__info__office center-block">
 					<h2 class="text-uppercase"><?php _e( 'oficinas principales' , 'damol-framework' ); ?></h2>
-					<p>
-						<i class="icon icon--tel"></i> Tel: (01) 3225284 - (01) 3225285 <br /><br />
+					<p>					
+						<?php $cel = $options['contact_cel']; if( !empty($cel) ) : ?>
+							<i class="icon icon--tel"></i> Cel: <?= $cel ?>
+							<br /><br />
+						<?php endif; ?>
 						<i class="icon icon--contact"></i> wcollachagua@damol.com.pe <br /><br />
 						<i class="icon icon--contact"></i> administracion@damol.com.pe
 					</p>
 					<span class="line-orange"> <i class="line-orange__icon"></i>
 						<i class="icon icon--address"></i>
-							Ofic. Lima: Cal. María José de Arce N° 225
-							Urb. Maranga <br /> San Miguel - Lima - Perú
+
+							Calle Bolognesi 125 - Oficina 20
+							Centro Ejecutivo Pardo <br /> Miraflores - Lima
 					</span>
 				</div><!-- /.sectionContacto__info__office -->
 			</div>

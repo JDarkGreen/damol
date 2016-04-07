@@ -64,6 +64,10 @@
 					<?php $tel = $options['contact_tel']; if( !empty($tel) ) : ?>
 						<p>Tel: <?= $tel ?></p>
 					<?php endif; ?>
+					<?php $cel = $options['contact_cel']; if( !empty($cel) ) : ?>
+						<p>Cel: <?= $cel ?></p>
+					<?php endif; ?>
+
 
 					<!-- Consultas Correo  -->
 					<?php $emails = $options['contact_email']; if( !empty($emails) ) : ?>

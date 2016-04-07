@@ -198,7 +198,15 @@
 
 									        foreach( $all_project as $project ) :
 										?>	
-											<a class="<?= $project->post_title === $first_project->post_title ? 'active' : '' ?>" href="<?= $project->guid ?>"><?= $project->post_title ?></a>
+											<a class="<?= $project->post_title === $first_project->post_title ? 'active' : '' ?>" href="<?= $project->guid ?>"><?php 
+													$excerpt = $project->post_excerpt; 
+													if( !empty($excerpt) ){
+														echo $excerpt;
+													}else{
+														echo $project->post_title;
+													}
+												?>
+											</a>
 										<?php endforeach; ?>							    	
 								    </div><!-- /.panel-body -->
 								</div> <!-- /.panel-collapse -->
