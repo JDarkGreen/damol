@@ -7,8 +7,6 @@
 	//
 	$category_post = get_the_category($post->ID);  #var_dump($category_post);
 
-
-
 	$page = get_page_by_title( "proyecto" . " " . $category_post[0]->slug  ); #var_dump($page);
 
 ?>
@@ -95,10 +93,11 @@
 
 						<?php 
 					        $args1 = array(
-								'category_name' => $cat[0]->name,
-								'order'         => 'ASC',
-								'orderby'       => 'title',
-								'post_type'     => 'proyecto',
+								'category_name'  => $cat[0]->slug,
+								'order'          => 'ASC',
+								'orderby'        => 'title',
+								'post_type'      => 'proyecto',
+								'posts_per_page' => -1,
  					        );
 
 					        $all_project1 = get_posts( $args1 ); #var_dump($all_project1);
@@ -126,8 +125,10 @@
 
 							$i = 0;
 
-							$terms_post = wp_get_post_terms($post->ID, 'damol_empresa' );
+							$terms_post = wp_get_post_terms( $post->ID, 'damol_empresa' );
 							$term_post  = $terms_post[0]->slug;
+
+							#var_dump($terms_post);
 
 							foreach( $empresas as $empresa ) :
 						?>

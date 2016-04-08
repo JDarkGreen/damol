@@ -136,15 +136,22 @@
 					<div class="list_project_by_category panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 
 						<?php 
+
+							#echo $cat[0]->slug;
 	 
 					        $args1 = array(
-								'category_name' => $cat[0]->name,
-								'order'         => 'ASC',
-								'orderby'       => 'title',
-								'post_type'     => 'proyecto',
+								'category_name'  => $cat[0]->slug,
+								'order'          => 'ASC',
+								'orderby'        => 'title',
+								'post_type'      => 'proyecto',
+								'posts_per_page' => -1,
  					        );
 
-					        $all_project1 = get_posts( $args1 ); #var_dump($all_project1);
+					        $all_project1 = get_posts( $args1 ); 
+
+					        /*foreach($all_project1 as $p ){
+					        	echo "<p>" .$p->post_title . "</p>";  
+					        } */
 
 					        if( count($all_project1) > 0 ) :
 
