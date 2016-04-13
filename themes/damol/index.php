@@ -146,7 +146,13 @@
 								<?php the_post_thumbnail('full',array('class'=>'img-responsive')); ?>
 								<span class="bg-transparence"></span>
 							</figure>
-							<h2 class="text-center"><?php the_title(); ?></h2>
+							<h2 class="text-center">
+								<?php 
+									$short_title   = wp_trim_words( get_the_title() , 2 , "");
+									$short_excerpt = get_the_excerpt();
+								?>
+								<?= !empty( $short_excerpt ) ? $short_excerpt : $short_title; ?>
+							</h2>
 						</a>
 					</article> <!-- /.sectionHomeProyects__article -->
 				<?php endwhile; ?>
