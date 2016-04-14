@@ -11,6 +11,9 @@
 
 ?>
 
+<!-- Contenedor SB SITE responsive libreria SLIDEBARS -->
+<section id="sb-site" class="">
+
 <!-- CONTENIDO PRINCIPAL -->
 <main class="mainWrapper center-block">
 	
@@ -40,13 +43,18 @@
 	<!-- Contenido Principal -->
 	<section class="sectionService__content">
 		<div class="row">
-			<div class="col-xs-8">
+
+			<!-- SECCION INFORMACION -->
+			<div class="col-xs-12 col-sm-8">
 				<!-- Informacion de Projectos -->
 				<section class="sectionProjectos__single-project">
 					<!-- Title -->
 					<h2 class="title-subcontent-pages"><?= $post->post_title; ?></h2>
 					<!-- Description -->
 					<p><?= $post->post_content; ?></p>
+
+					<!-- Mostrar botón ver más projectos solo en versión mobile -->
+					<a href="#" class="visible-xs-inline-block btn btn-danger btn__more-to-aside text-uppercase" data-section="sectionProjectos__categories" >Ver más proyectos</a>
 
 					<!-- Galería -->
 					<section class="sectionProjectos__single-project__gallery">
@@ -66,20 +74,21 @@
 
 								foreach ( $attachment as $atta ) :					
 							?>
-								<div class="col-xs-4">
+								<div class="col-xs-12 col-sm-4">
 									<a class="section-wrapper__multimedia__article grouped_elements" rel="group1" href="<?= $atta->guid ?>">
 										<figure class="">
 											<img src="<?= $atta->guid ?>" alt="<?= $atta->post_title ?>" class="center-block" />
 										</figure> 
 									</a><!-- /.section-wrapper__multimedia__article -->	 			
-								</div> <!-- /col-xs-4 -->				
+								</div> <!-- /col-xs-12 col-sm-4-->				
 							<?php endforeach; ?>				
 						</div> <!-- /row -->		
 					</section><!-- /.sectionProjectos__single-project__gallery -->
 
 				</section><!-- /.sectionProjectos__single-project -->
-			</div><!--  -->
-			<div class="col-xs-4">
+			</div><!-- col-xs-12 col-sm-8 -->
+
+			<div class="col-xs-4 hidden-xs">
 			<!-- Categorias de la seccion -->
 				<aside class="sectionProjectos__categories">
 
@@ -174,7 +183,7 @@
 						<?php $i++; endforeach; endif; //cerrar endif si esta vacio ?>
 					</div><!-- /.list_project_by_category -->
 				</aside><!-- /.sectionProjectos__categories -->
-			</div><!-- col-xs-4 -->
+			</div><!-- col-xs-4 hidden-xs-->
 		</div><!-- /.row -->
 	</section><!-- /.sectionService__content -->
 
@@ -189,3 +198,5 @@
 
 <!-- Footer -->
 <?php get_footer(); ?>
+
+</section> <!-- /.id="sb-site" -->

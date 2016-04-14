@@ -5,6 +5,9 @@
 	global $post;
 ?>
 
+<!-- Contenedor SB SITE responsive libreria SLIDEBARS -->
+<section id="sb-site" class="">
+
 <!-- CONTENIDO PRINCIPAL -->
 <main class="mainWrapper center-block">
 	
@@ -73,3 +76,5 @@
 
 <!-- Footer -->
 <?php get_footer(); ?>
+
+</section><!-- /.id="sb-site" -->

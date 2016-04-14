@@ -3,8 +3,11 @@
 <!-- Header -->
 <?php get_header(); ?>
 
+<!-- Contenedor SB SITE responsive libreria SLIDEBARS -->
+<section id="sb-site" class="">
+
 <!-- CONTENIDO PRINCIPAL -->
-<main class="mainWrapper center-block">
+<main id="" class="mainWrapper center-block">
 	
 	<!-- Banner de Página -->
 	<?php if( has_post_thumbnail() ) : ?>
@@ -114,3 +117,5 @@
 
 <!-- Footer -->
 <?php get_footer(); ?>
+
+</section><!-- /.id="sb-site" -->

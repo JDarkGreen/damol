@@ -120,11 +120,6 @@ body,html
 		background-color: rgba(0,0,0,.3)
 
 
-//>>>> BOTON VERSION MOBILE SOLO ABRE ASIDE LADO DERECHO DE LA PAGINA
-.btn__more-to-aside
-	margin: 0 auto 20px
-
-
 
 /***************************************************************************************/
 /**-------------------------- TEXTOS           ---------------------------------------**/
@@ -163,9 +158,6 @@ body,html
 	font-weight: 700
 	margin     : 0 auto
 	padding    : 0 0 0 10px 
-//en blanco
-.mainWrapper__title--white
-	color: white
 
 //>>> WRAPPER POSITION relative
 .section-wrapper-relative
@@ -182,43 +174,7 @@ body,html
 /**-------------------------- HEADER   -----------------------------------------------**/
 /***************************************************************************************/
 
-//contenedor small main header
-.mainHeader__content-small
-	background: white
-	padding   : 8px 
-		
-	//iconos menu para abrir navegacion
-	.icon-header
-		background: black
-		color     : $color_damol_orange 
-		font-size : 2.5rem
-		padding   : 4px 
 
-//contenedor de logo
-.content-logo
-	max-width: 202px
-	padding  : 2% 0 
-	width    : 65%
-.content-logo--white
-	background: white
-
-
-//SEPARADOR MAIN HEADER
-.mainHeader-padding-separator
-	height: 6rem
-
-
-
-/***************************************************************************************/
-/**-------------------------- ASIDES  SIDEBAR MOBILE ---------------------------------**/
-/***************************************************************************************/
-
-.sidebarMobile
-	padding: 20px 0
-	z-index: 99
-//lado derecho overlay
-.sidebarMobile--right
-	//padding: 150px 0 0
 
 /***************************************************************************************/
 /**-------------------------- FOOTER   -----------------------------------------------**/
@@ -352,8 +308,7 @@ body,html
 
 	//ul
 	ul
-		margin : 0 auto
-		padding: 0
+		margin: 0 auto
 		li 
 			border-top: 3px solid transparent
 			margin    : 2px 12px 0
@@ -424,7 +379,7 @@ body,html
 	right   : 0 
 	top     : 0
 	z-index : 999
-	//+animation(element-estirar 900ms linear)
+	+animation(element-estirar 900ms linear)
 
 
 /***************************************************************************************/
@@ -931,100 +886,3 @@ body,html
 	height   : 344px 
 	max-width: 100%
 	width    : 100%
-
-
-/****************************************************************************************/
-/**--------------------------  MEDIAS QUERIES      ------------------------------------**/
-/****************************************************************************************/
-
-@media (max-width: 480px) 
-
-	//[[[[[[[[[[[[[[[[[[[   HEADER   ]]]]]]]]]]]]]]]]]]]]]]]]]]]
-	.mainHeader
-		left      : 0 
-		max-height: 117px
-		position  : fixed
-		right     : 0 
-		top       : 0 
-		z-index   : 99999
-	
-	//[[[[[[[[[[[[[[[[[[[ NAVIGATION ]]]]]]]]]]]]]]]]]]]]]]]]]]]
-	.mainNav 
-		ul 
-			li 
-				.sub-menu
-					position  : relative
-					//li 
-					li 
-						+transition( all 500ms ease )
-						//hover li submenu
-						&.current-menu-item,&:hover 
-							background: white
-							color     : $color_damol_orange
-
-				//hover li main menu
-				&:hover 
-					.sub-menu 
-						background: $color_damol_orange
-
-	//[[[[[[[[[[[[[[[[[[[ SECCION BANNERS  ]]]]]]]]]]]]]]]]]]]
-	.sectionBanner 
-		.carousel-caption__content
-			bottom: 10px
-			h2,p
-				font-size: 12px
-				padding  : 10px
-
-
-	//[[[[[[[[[[[[[[[[[[[ SECCION PORTADA - SERVICIOS ]]]]]]]]]]]]]]]]]]]
-	.sectionHomeService
-		width          : 100%
-		//contenedor dearticulo 
-		.sectionHomeService__content
-			justify-content: center 
-		//articulo 
-		.sectionHomeService__article
-			width: 100%
-
-	//[[[[[[[[[[[[[[[[[[[   PÁGINA  - NOSOTROS ]]]]]]]]]]]]]]]]]]]
-	.sectionNosotros--bg-orange
-		width: 100%
-	//seccion valores
-	.sectionNosotros__valores
-		ul 
-			padding: 0 0 0 5px
-
-	//[[[[[[[[[[[[[[[[[[[ PÁGINA  - SERVICIOS ]]]]]]]]]]]]]]]]]]]
-
-	//contenedor.
-	.sectionService__content
-		padding: 28px 15px 45px
-
-		//listas
-		ul 
-			padding: 0 0 0 5px
-
-	//[[[[[[[[[[[[[[[[[[[ PÁGINA  - CONTACTO ]]]]]]]]]]]]]]]]]]]
-	.sectionContacto__info__office 
-		p
-			margin: 0 0 13px 0px
-	//mapa
-	.sectionContacto__mapa
-		margin: 40px auto 0
-
-	//[[[[[[[[[[[[[[[[[[[ FOOTER ]]]]]]]]]]]]]]]]]]]
-	.mainFooter__content
-		flex-wrap: wrap
-		width    : 100%
-
-		//ITEMS FOOTER INFO
-		.item-prefooter--info,.item-prefooter--sociales,.item-prefooter--contacto
-			border    : none 
-			margin    : 15px auto 
-			padding   : 0
-			text-align: center 
-			width     : 100%
-
-	//[[[[[[[[[[[[[[[[[[[  WRAPPERS  ]]]]]]]]]]]]]]]]]]]
-	.sectionWrapper__content
-		padding: 57px 15px 0

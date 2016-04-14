@@ -7,6 +7,9 @@
 
 <?php $options = get_option('damol_custom_settings'); ?>
 
+<!-- Contenedor SB SITE responsive libreria SLIDEBARS -->
+<section id="sb-site" class="">
+
 <!-- CONTENIDO PRINCIPAL -->
 <main class="mainWrapper center-block">
 	
@@ -34,7 +37,8 @@
 
 		<!-- Seccion Informacion -->
 		<section class="sectionContacto__info">
-			<div class="col-xs-6">
+
+			<div class="col-xs-12 col-sm-6">
 				<div class="sectionContacto__info__office center-block">
 					<h2 class="text-uppercase"><?php _e( 'oficinas principales' , 'damol-framework' ); ?></h2>
 					<p>					
@@ -52,8 +56,9 @@
 							Centro Ejecutivo Pardo <br /> Miraflores - Lima
 					</span>
 				</div><!-- /.sectionContacto__info__office -->
-			</div>
-			<div class="col-xs-6">
+			</div> <!-- /."col-xs-12 col-sm-6 -->
+
+			<div class="col-xs-12 col-sm-6">
 				<?php 
 					$input_ids_img = get_post_meta($post->ID, 'imageurls_'.$post->ID , true);
 					$array_images  = explode(',', $input_ids_img );
@@ -70,7 +75,8 @@
 						<img src="<?= $atta->guid ?>" alt="<?= $atta->post_title ?>" class="img-responsive center-block" />
 					</figure> 
 				<?php endforeach; ?>				
-			</div>
+			</div> <!-- /."col-xs-12 col-sm-6 -->
+
 			<div class="clearfix"></div>
 		</section><!-- /.sectionContacto__info -->
 
@@ -133,3 +139,5 @@
 
 <!-- Footer -->
 <?php get_footer(); ?>
+
+</section> <!-- /. id="sb-site" class -->

@@ -31,8 +31,8 @@
 		?>	
 		<?php if( has_post_thumbnail() ) : ?>
 	    	<div class="item <?= $i == 0 ? 'active' : '' ?>">
-	      		<?php //echo the_post_thumbnail( 'full', array( 'class' => 'img-responsive' ) ); ?>
-	      		<img src="http://lorempixel.com/1920/1080" alt="" class="img-responsive" />
+	      		<?= the_post_thumbnail( 'full', array( 'class' => 'img-responsive' ) ); ?>
+	      		<!--img src="http://lorempixel.com/1920/1080" alt="" class="img-responsive"-->
 	      		<section class="container">	
 
 	      				<div class="">
@@ -48,7 +48,7 @@
 				      				$content =  get_the_content();
 				      				if ( !empty($content) ): 
 				      			?>
-				      				<p class="pull-right"><?= $content; ?></p>
+				      				<p class="pull-right hidden-xs"><?= $content; ?></p>
 				      			<?php endif; ?>
 			      			</div> <!-- /.carousel-caption__content -->
 	      				</div> <!-- /.-->

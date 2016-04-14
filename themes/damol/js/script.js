@@ -6,13 +6,20 @@ var j = jQuery.noConflict();
 	j(document).on('ready',function(){
 
 		/*>>>>>>>>>>>> LIBRERIA RESPONSIVE NAVIGATION MENU SLIDEBARS -----------  */
-		j.slidebars({
+		var mySlidebars = new j.slidebars({
 			siteClose         : true, // true or false
 			disableOver       : 480, // integer or false
 			hideControlClasses: true, // true or false
-			scrollLock        : false // true or false
+			scrollLock        : false, // true or false
       	});
-    
+
+      	/*>>>>>>>>>>>> MENU EN VERSION MOBILE ABRE SUBELEMENTOS SI ES COMPRUEBA
+      	QUE TIENE SUBMENU  -----------  */
+      	j('.js-main-menu-mobile li.menu-item-has-children')
+      		.children('a')
+      		.on('click',function(e){
+      			e.preventDefault(); //desactivar la function por defecto
+      		});
 
 		/*>>>>>>>>>>>> BOTON UP DIRIGE ARRIBA DE LA PÁGINA -----------  */
 
@@ -23,6 +30,45 @@ var j = jQuery.noConflict();
 			j('html, body').animate({scrollTop : 0}, 800);
 			return false;
 		});
+
+		/*>>>>>>>>>>>> BOTON VERSION MOBILE SOLO ABRE ASIDE LADO DERECHO DE LA PAGINA -----------  */
+		j("#sb-toggle-right").on('click',function(e){
+			e.preventDefault();
+			//llamar a la funcion
+			showContentbyId( "sectionHomeFacebook" );
+			//abrir toggle sidebar right
+			mySlidebars.slidebars.toggle('right');
+
+		});
+
+		/*>>>>>>>>>>>> BOTON VERSION MOBILE SOLO ABRE ASIDE CON CONTENIDO RESPECTIVO
+		LADO DERECHO DE LA PAGINA -----------  */
+		j(document).on('click',".btn__more-to-aside",function(e){
+			e.preventDefault();
+
+			var data_section =  j(this).attr('data-section');
+			//llamar a la fucntion
+			showContentbyId( data_section );
+			//abrir aside lado derecho plugin slidebar
+
+			mySlidebars.slidebars.toggle('right');
+		});
+
+		/*>>>>>> FUNCTION MOSTRAR CONTENIDO ESPECIFICO PARAMETRO ID DE LA SECCION DENTRO DE ASIDE
+		DERECHO */
+		function showContentbyId( idsection ){
+			//variable para ocultar el contenido de facebook u otro y obtener el id 
+			//de la seccion que se quiere mostrar idsection
+			var data_section =  idsection;
+			//quitar a todos las secciones dentro la clase hide
+			j(".js-sidebarRightInside").addClass('hide'); //colocarla
+
+			//asignar o abrir solo la seccion interior mediante el parametro data-section
+			var seccion = j("#"+data_section);
+			seccion.removeClass('hide');
+
+			console.log(seccion);
+		}
 
 		/*>>>>>>>>>>>> STYCKY HEADER -----------------------*/
 
