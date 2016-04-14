@@ -31,7 +31,8 @@
 		?>	
 		<?php if( has_post_thumbnail() ) : ?>
 	    	<div class="item <?= $i == 0 ? 'active' : '' ?>">
-	      		<?php echo the_post_thumbnail( 'full', array( 'class' => 'img-responsive' ) ); ?>
+	      		<?php //echo the_post_thumbnail( 'full', array( 'class' => 'img-responsive' ) ); ?>
+	      		<img src="http://lorempixel.com/1920/1080" alt="" class="img-responsive" />
 	      		<section class="container">	
 
 	      				<div class="">

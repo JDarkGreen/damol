@@ -9,7 +9,7 @@
 <?php get_header(); ?>
 
 <!-- Contenedor SB SITE responsive libreria SLIDEBARS -->
-<section id="sb-site">
+<section id="sb-site" class="">
 
 <!-- Incluir seccion de banner -->
 <?php  
@@ -81,8 +81,8 @@
 			</div>
 		</section><!-- /.sectionHomeService -->
 
-		<!-- Seccion widget facebook -->
-		<section class="sectionHomeFacebook center-block">
+		<!-- Seccion widget facebook - Ocultar en version mobile -->
+		<section class="sectionHomeFacebook center-block hidden-xs">
 			<!-- Titulo -->
 			<h2 class="mainWrapper__title text-uppercase"><?php _e( 'facebook oficial' , 'damol-framework' ); ?></h2>
 			<br>
@@ -182,8 +182,5 @@
 <!-- Contenedor SB SITE responsive libreria SLIDEBARS -->
 </section>
 
-<!-- Navegacion responsive solo en mobiles  -->
-<div class="sb-slidebar sb-left">
-  <!-- Your left Slidebar content. -->
-</div>
+
 
