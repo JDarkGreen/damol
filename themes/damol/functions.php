@@ -337,7 +337,7 @@ function inox_add_thumbnail_columns_data( $column, $post_id ) {
     switch ( $column ) {
     case 'featured_thumb':
         echo '<a href="' . get_edit_post_link() . '">';
-        echo the_post_thumbnail( 'thumbnail' );
+        echo the_post_thumbnail( array(120,100) );
         echo '</a>';
         break;
     }
