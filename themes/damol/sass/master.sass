@@ -15,6 +15,8 @@ $color_gray        : #f1eff0
 $color_gray_dark   : #c2c2c2
 $color_gray_text   : #848484
 
+$color_damol_gray  : #666666 
+
 /***************************************************************************************/
 /**-------------------------- RESET --------------------------------------------------**/
 /***************************************************************************************/
@@ -122,7 +124,20 @@ body,html
 
 //>>>> BOTON VERSION MOBILE SOLO ABRE ASIDE LADO DERECHO DE LA PAGINA
 .btn__more-to-aside
-	margin: 0 auto 20px
+	background     : $color_damol_orange
+	color          : white 
+	margin         : 0 auto 20px
+	padding        : 10px 12px 
+	text-decoration: none 
+	+border-radius( 5px )
+	+transition( all 500ms ease )
+	//hover
+	&:hover, &:focus 
+		color          : white 
+		text-decoration: none 
+	&:hover
+		+opacity( 0.7 )
+
 
 
 
@@ -189,7 +204,7 @@ body,html
 		
 	//iconos menu para abrir navegacion
 	.icon-header
-		background: black
+		background: $color_damol_gray
 		color     : $color_damol_orange 
 		font-size : 2.5rem
 		padding   : 4px 
@@ -985,6 +1000,10 @@ body,html
 		//articulo 
 		.sectionHomeService__article
 			width: 100%
+
+	//[[[[[[[[[[[[[[[[[[[ SECCION PORTADA - FACEBOOK ]]]]]]]]]]]]]]]]]]]
+	.sectionHomeFacebook
+		margin: 20px
 
 	//[[[[[[[[[[[[[[[[[[[   PÁGINA  - NOSOTROS ]]]]]]]]]]]]]]]]]]]
 	.sectionNosotros--bg-orange

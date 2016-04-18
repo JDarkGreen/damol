@@ -78,10 +78,12 @@
 		<!-- Seccion contenedor mostrar en mobile -->
 		<section class="mainHeader__content-small visible-xs-block sb-slide">
 			<!-- Inono Left -->
-			<span class="sb-toggle-left icon-header pull-left glyphicon glyphicon-th"></span>
-			<!-- Inono Right -->
-			<span id="sb-toggle-right" class="icon-header pull-right glyphicon glyphicon-th">
-			</span>
+			<span class="sb-toggle-left icon-header pull-left glyphicon glyphicon-align-justify"></span>
+
+			<!-- Inono Right -- En observación -->
+			<!--span id="sb-toggle-right" class="icon-header pull-right glyphicon glyphicon-th">
+			</span-->
+
 			<!-- Logo -->	
 			<a class="content-logo center-block" href="<?= site_url() ?>">
 				<?php if( !empty($options['logo']) ) : ?>
@@ -142,43 +144,62 @@
 	<!-- Navegacion responsive solo en mobiles Menu de aside -->
 	<aside class="sidebarMobile sidebarMobile--right sb-slidebar sb-right sb-style-push">
 
-		<!-- Seccion widget facebook -->
-		<section id="sectionHomeFacebook" class="sectionHomeFacebook center-block js-sidebarRightInside">
-			<!-- Titulo -->
-			<h2 class="mainWrapper__title mainWrapper__title--white text-uppercase"><?php _e( 'facebook oficial' , 'damol-framework' ); ?></h2>
-			<br>
-
-			<!-- Contenedor -->
-			<?php $link_facebook = $options['red_social_fb']; 
-				if( !empty($link_facebook) ) :
-			?>
-				<!-- Content -->
-				<div id="fb-root"></div>
-
-						<!-- Script -->
-						<script>(function(d, s, id) {
-						  var js, fjs = d.getElementsByTagName(s)[0];
-						  if (d.getElementById(id)) return;
-						  js = d.createElement(s); js.id = id;
-						  js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.5";
-						  fjs.parentNode.insertBefore(js, fjs);
-						}(document, 'script', 'facebook-jssdk'));</script>
-
-						<div class="fb-page" data-href="<?= $link_facebook ?>" data-tabs="timeline" data-small-header="false"  data-width="220" data-hide-cover="false" data-show-facepile="true">
-							<div class="fb-xfbml-parse-ignore">
-								<blockquote cite="<?= $link_facebook ?>">
-									<a href="<?= $link_facebook ?>"><?php bloginfo('name'); ?></a>
-								</blockquote>
-							</div>
-						</div>
-
-			<?php endif; ?>
-		</section><!-- /. sectionHomeFacebook -->
-
 		<!-- SECCION DE CATEGORIAS DE PROYECTOS EN VERSION MOBILE SE ACTIVA 
 		SI TIENE POST ACTUAL -->
 		<?php 
-			$cat = get_the_category($post->ID); 
+			/* proyecto (post) actual */
+			$args1 = array(
+				'category_name' => $cat[0]->name,
+				'order'         => 'ASC',
+				'orderby'       => 'title',
+				'post_type'     => 'proyecto',
+				);
+
+				$all_project1 = get_posts( $args1 ); #var_dump($all_project3);
+
+        $arra = array();
+        foreach ( $all_project1 as $pro ) {
+        	$terminos = wp_get_post_terms($pro->ID, 'damol_empresa' );
+
+        	foreach ($terminos as $termi ) {
+        		array_push( $arra , $termi->term_id );
+        	}
+        }
+
+        $arra = array_unique($arra);
+        $arra = implode(",", $arra ); #var_dump($arra);
+        
+        $args = array(
+        	'order'      => 'ASC',
+        	'orderby'    => 'title',
+        	'include'    =>  $arra,
+        	);
+        $empresas = get_terms( 'damol_empresa', $args  );
+
+        $args = array(
+        	'category_name' => $cat[0]->name,
+        	'order'         => 'ASC',
+        	'orderby'       => 'title',
+        	'post_type'     => 'proyecto',
+        	'tax_query' => array(
+        		array(
+							'taxonomy' => 'damol_empresa',
+							'field'    => 'slug',
+							'terms'    =>  $empresas[0]->name,
+        		)
+        	)
+        );
+
+			$all_project = get_posts( $args );  #var_dump( $all_project);
+
+			//comprobar si esta el el single de cada proyecto 
+			if ( is_single() ){
+				$first_project = get_post( $post->ID );
+			} else{
+				$first_project = $all_project[0]; #var_dump($first_project);
+			}
+
+			$cat = get_the_category($post->ID);  /* array de categorias */
 			if( count($cat) > 0 ) :
 		?>
 		<section id="sectionProjectos__categories" class="sectionProjectos__categories js-sidebarRightInside hide">

@@ -169,6 +169,42 @@
 
 	</section> <!-- /.sectionHomeProyects -->
 
+	<!-- Seccion widget facebook mostrado solamente en versión mobile -->
+	<section id="sectionHomeFacebook" class="sectionHomeFacebook center-block js-sidebarRightInside visible-xs-block">
+
+		<!-- Titulo -->
+		<h2 class="mainWrapper__title text-uppercase">
+			<?php _e( 'facebook oficial' , 'damol-framework' ); ?></h2>
+		<br>
+
+		<!-- Contenedor -->
+		<?php $link_facebook = $options['red_social_fb']; 
+		if( !empty($link_facebook) ) :
+			?>
+		<!-- Content -->
+		<div id="fb-root"></div>
+
+		<!-- Script -->
+		<script>(function(d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) return;
+			js = d.createElement(s); js.id = id;
+			js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.5";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));</script>
+
+		<div class="fb-page" data-href="<?= $link_facebook ?>" data-tabs="timeline" data-small-header="false"  data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+			<div class="fb-xfbml-parse-ignore">
+				<blockquote cite="<?= $link_facebook ?>">
+					<a href="<?= $link_facebook ?>"><?php bloginfo('name'); ?></a>
+				</blockquote>
+			</div>
+		</div>
+
+	<?php endif; ?>
+	</section><!-- /. sectionHomeFacebook -->
+
+
 	<!-- Incluir Sección de Clientes mediante partial  -->
 	<?php include( locate_template('partials/clientes.php') ); ?>
 	<!-- Fin seccion clientes -->

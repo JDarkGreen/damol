@@ -99,7 +99,7 @@
 					<p><?= $first_project->post_content; ?></p>
 
 					<!-- Mostrar botón ver más projectos solo en versión mobile -->
-					<a href="#" class="visible-xs-inline-block btn btn-danger btn__more-to-aside text-uppercase" data-section="sectionProjectos__categories" >Ver más proyectos</a>
+					<a href="#" class="visible-xs-inline-block btn__more-to-aside text-uppercase" data-section="sectionProjectos__categories" >Ver más proyectos</a>
 
 					<!-- Galería -->
 					<section class="sectionProjectos__single-project__gallery">
