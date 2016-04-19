@@ -1,3 +1,4 @@
+
 <?php  
 	// The Query
 	$args = array(
@@ -18,7 +19,6 @@
 	if ( $the_query->have_posts() ) :
 
 ?>
-
 <!-- Seccion de Banners -->
 <section id="carousel-banner-home" class="sectionBanner carousel slide" data-ride="carousel">
 	<!-- Wrapper for slides -->
