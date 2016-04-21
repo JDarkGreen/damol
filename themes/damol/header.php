@@ -141,7 +141,7 @@
 
 	</aside>	<!-- /. -->
 
-	<!-- Navegacion responsive solo en mobiles Menu de aside -->
+	<!-- Navegacion responsive solo en mobiles Menu de aside right-->
 	<aside class="sidebarMobile sidebarMobile--right sb-slidebar sb-right sb-style-push">
 
 		<!-- SECCION DE CATEGORIAS DE PROYECTOS EN VERSION MOBILE SE ACTIVA 
@@ -210,7 +210,7 @@
 			</h2><!-- /title_category -->
 
 			<!-- Contenedor Accordeon -->
-			<div class="list_project_by_category panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+			<div class="list_project_by_category panel-group" id="accordion3" role="tablist" aria-multiselectable="true">
 
 				<?php 
 				$args1 = array(
@@ -253,12 +253,12 @@
 					foreach( $empresas as $empresa ) :
 				?>
 					<div class="panel panel-default">
-						<div class="panel-heading" role="tab" id="heading<?= $empresa->term_id; ?>">
+						<div class="panel-heading" role="tab" id="heading<?= $empresa->term_id; ?>3">
 							<h4 class="panel-title">
-								<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse<?= $empresa->term_id; ?>" aria-expanded="true" aria-controls="collapse<?= $empresa->term_id; ?>"><?= $empresa->name; ?></a>
+								<a role="button" data-toggle="collapse" data-parent="#accordion3" href="#collapse<?= $empresa->term_id; ?>3" aria-expanded="true" aria-controls="collapse<?= $empresa->term_id; ?>3"><?= $empresa->name; ?></a>
 							</h4> <!-- /.panel-title -->
 						</div> <!-- /.panel-heading -->
-						<div id="collapse<?= $empresa->term_id; ?>" class="panel-collapse collapse <?= $i == 0 ? 'in' : '' ?>" role="tabpanel" aria-labelledby="heading<?= $empresa->term_id; ?>">
+						<div id="collapse<?= $empresa->term_id; ?>3" class="panel-collapse collapse <?= $i == 0 ? 'in' : '' ?>" role="tabpanel" aria-labelledby="heading<?= $empresa->term_id; ?>3">
 							<div class="panel-body">
 								<?php  
 								$args = array(
