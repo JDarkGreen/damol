@@ -645,6 +645,12 @@ function custom_damol_save_postdata($post_id){
  
 add_action('save_post', 'custom_damol_save_postdata');
 
+/***********************************************************************************************/
+/* Agregar campo orden en columnas de administracion de wordpress  */
+/***********************************************************************************************/
+
+require_once("functions/add_sortable_admin_columns.php");
+
 
 /***********************************************************************************************/
 /* Cargas opciones de la página y customizar widgets  */
