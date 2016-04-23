@@ -153,6 +153,7 @@
 				'order'         => 'ASC',
 				'orderby'       => 'title',
 				'post_type'     => 'proyecto',
+				'post_status'   => 'publish',
 				);
 
 				$all_project1 = get_posts( $args1 ); #var_dump($all_project3);
@@ -181,6 +182,7 @@
         	'order'         => 'ASC',
         	'orderby'       => 'title',
         	'post_type'     => 'proyecto',
+        	'post_status'   => 'publish',
         	'tax_query' => array(
         		array(
 							'taxonomy' => 'damol_empresa',
@@ -219,6 +221,7 @@
 					'orderby'        => 'title',
 					'post_type'      => 'proyecto',
 					'posts_per_page' => -1,
+					'post_status'    => 'publish',
 					);
 
 				$all_project1 = get_posts( $args1 ); 
@@ -266,6 +269,7 @@
 									'order'         => 'ASC',
 									'orderby'       => 'title',
 									'post_type'     => 'proyecto',
+									'post_status'   => 'publish',
 									'tax_query' => array(
 										array(
 											'taxonomy'         => 'damol_empresa',
