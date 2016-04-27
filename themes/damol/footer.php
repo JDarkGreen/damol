@@ -37,15 +37,15 @@
 					<ul class="item-prefooter__social-links">
 						<!-- youtube -->
 						<?php $youtube = $options['red_social_ytube']; if( !empty($youtube) ) : ?>
-							<li><a href="<?= $youtube ?>"><img src="<?= IMAGES ?>/footer/redes-sociales/youtube.png" alt="facebook" class="img-responsive"></a></li>
+							<li><a target="_blank" href="<?= $youtube ?>"><img src="<?= IMAGES ?>/footer/redes-sociales/youtube.png" alt="facebook" class="img-responsive"></a></li>
 						<?php endif; ?>
 						<!-- twitter -->
 						<?php $twitter = $options['red_social_twitter']; if( !empty($twitter) ) : ?>
-							<li><a href="<?= $twitter ?>"><img src="<?= IMAGES ?>/footer/redes-sociales/twitter.png" alt="" class="img-responsive"></a></li>
+							<li><a target="_blank" href="<?= $twitter ?>"><img src="<?= IMAGES ?>/footer/redes-sociales/twitter.png" alt="" class="img-responsive"></a></li>
 						<?php endif; ?>
 						<!-- fb -->
 						<?php $facebook = $options['red_social_fb']; if( !empty($facebook) ) : ?>
-							<li><a href="<?= $facebook ?>"><img src="<?= IMAGES ?>/footer/redes-sociales/facebook.png" alt="" class="img-responsive"></a></li>
+							<li><a target="_blank" href="<?= $facebook ?>"><img src="<?= IMAGES ?>/footer/redes-sociales/facebook.png" alt="" class="img-responsive"></a></li>
 						<?php endif; ?>
 						
 					</ul>

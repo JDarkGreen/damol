@@ -116,8 +116,9 @@
       });
 
       //infowindow
-      var infowindow    = new google.maps.InfoWindow({
-        content: <?= "'" . $options['contact_address'] . "'" ?>
+      /*content: <?= "'" . $options['contact_address'] . "'" ?>*/
+      var infowindow = new google.maps.InfoWindow({
+        content: 'Poner en google "movitecnica" ',
       });
 
       //crear marcador
