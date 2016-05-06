@@ -21,7 +21,7 @@
 	<![endif]-->
 
 	<!-- Favicon and Apple Icons -->
-	
+	<link rel="icon" type="image/png" href="<?= THEMEROOT ?>/favicon.ico"  />
 	
 	<?php wp_head(); ?>
 </head>
