@@ -104,10 +104,10 @@
 						  fjs.parentNode.insertBefore(js, fjs);
 						}(document, 'script', 'facebook-jssdk'));</script>
 
-						<div class="fb-page" data-href="<?= $link_facebook ?>" data-tabs="timeline" data-small-header="false"  data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+						<div class="fb-page" data-href="https://www.facebook.com/Tecserpc-273564962981759/" data-tabs="timeline" data-small-header="false"  data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
 							<div class="fb-xfbml-parse-ignore">
-								<blockquote cite="<?= $link_facebook ?>">
-									<a href="<?= $link_facebook ?>"><?php bloginfo('name'); ?></a>
+								<blockquote cite="https://www.facebook.com/Tecserpc-273564962981759/">
+									<a href="https://www.facebook.com/Tecserpc-273564962981759/"></a>
 								</blockquote>
 							</div>
 						</div>

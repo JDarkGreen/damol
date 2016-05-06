@@ -10,12 +10,20 @@
 <main id="" class="mainWrapper center-block">
 	
 	<!-- Banner de Página -->
-	<?php if( has_post_thumbnail() ) : ?>
-		<figure class="bn_ImagePage">
-			<?php the_post_thumbnail('full',array('class'=>'img-responsive')); ?>
-		</figure> <!-- /.bn_ImagePage -->
-	<?php else: ?>
-		<p>asdasd</p>
+	<?php 
+		if( has_post_thumbnail() ) :
+	?>
+		<div class="section-wrapper-relative">
+			<figure class="bn_ImagePage">
+				<?php the_post_thumbnail('full',array('class'=>'img-responsive')); ?>
+			</figure> <!-- /.bn_ImagePage -->
+
+			<!-- Contenedor posicion absoluto -->
+			<section class="sectionService__content-banner">
+				<!-- Mostrar el título -->
+				<h2 class="text-uppercase"> <strong>NOSOTROS</strong></h2> <!-- /text-uppercase -->
+			</section><!-- /.sectionService__content-banner -->
+		</div> <!-- /.section-wrapper-relative -->
 	<?php endif; ?>
 
 	<!-- Contenedor con padding -->
